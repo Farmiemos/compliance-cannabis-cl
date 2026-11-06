@@ -8,8 +8,9 @@ description: >-
   "trazabilidad de cannabis", "autorización SAG", "DS 404 / Decreto 84". Audita un repo y genera, SIN
   abogado, la documentación de cumplimiento para un SaaS, empresa u organización que trabaja con cannabis
   medicinal en Chile, contrastada contra el texto oficial de la ley. Cubre la Ley 21.719, la 21.595 y el
-  pack sanitario-cannabis (Ley 20.000, DS 867, DS 404/405, Decreto 84/2015, Código Sanitario) y el pack
-  ley-20584 (derechos del paciente, ficha clínica, DS 41/2012). Derivada
+  pack sanitario-cannabis (Ley 20.000, DS 867, DS 404/405, Decreto 84/2015, Código Sanitario) y los packs
+  ley-20584 (ficha clínica), ley-20500 (la OSFL como asociación), tributario, ley-21663 (ciberseguridad) y
+  ley-19628 (transitorio). Derivada
   de compliance-cl de Lelemon (MIT).
 license: MIT
 allowed-tools:
@@ -37,7 +38,8 @@ en el repo que se re-corre en el tiempo. Objetivo: que un founder cumpla **solo*
 - **Controles** = unidades reutilizables que satisfacen varios marcos a la vez. Catálogo + crosswalk:
   `references/controls.md`.
 - **Packs** = una ley cada uno (`packs/<id>/pack.md`): obligaciones, controles que exige y documentos a
-  generar. Hoy: `ley-21719`, `ley-21595`, `sanitario-cannabis`, `ley-20584`.
+  generar. Hoy: `ley-21719`, `ley-21595`, `sanitario-cannabis`, `ley-20584`, `ley-20500`,
+  `tributario`, `ley-21663`, `ley-19628`.
 - **Estado** = el output vive en `<repo>/.compliance/` versionado por git. Formato: `references/output-model.md`.
 - **Fuentes (verdad)** = textos OFICIALES en `sources/` (`FUENTES.md`). Toda afirmación legal cita
   **ley + artículo + archivo**; lo no verificable se marca `[verificar contra fuente oficial]`. NADA
@@ -52,7 +54,9 @@ desconocido; en ese caso, proponer un **default sensato** y marcarlo.
 Recoger:
 1. Repo a auditar y **packs** a activar (default: `ley-21595` + `ley-21719`; agregar `sanitario-cannabis`
    si la organización cultiva, custodia, entrega o registra cannabis, o si el software lo hace por ella;
-   agregar `ley-20584` si el software guarda datos de salud: diagnósticos, recetas o atenciones).
+   agregar `ley-20584` si el software guarda datos de salud: diagnósticos, recetas o atenciones;
+   `ley-20500` y `tributario` si es una OSFL; `ley-21663` siempre (el test dice si obliga); `ley-19628`
+   mientras la fecha sea anterior al 1-dic-2026).
 2. **Empresa:** razón social, RUT, domicilio, correo de contacto, tamaño, representante legal.
 3. **Responsable de datos / encargado de prevención** designado (en micro suele ser el dueño).
 4. Por flujo de datos: rol **responsable** vs **encargado**.
@@ -63,6 +67,9 @@ Recoger:
    públicas (sitio, catálogo, redes)?
 8. Con `ley-20584`: ¿la organización otorga atenciones de salud (consultas, evaluaciones, indicaciones)?
    ¿Quién escribe los registros de salud y en qué rol?
+9. Con `ley-20500`: fines textuales de los estatutos, N° de inscripción, directorio, cómo se fijan los aportes
+   (acuerdo de asamblea, cuota igual o monto por cantidad recibida) y por qué el Estado y el sector privado no
+   cubren el tratamiento de los socios (eslabón 2 de la cadena del fundamento).
 Si ya existe `<repo>/.compliance/state.json`, leerlo: esta corrida es una re-evaluación.
 
 ### Fase 1 — Descubrimiento (leer el código, no asumir)
@@ -78,6 +85,8 @@ Recorrer el repo con Grep/Glob para levantar evidencia de cada control:
 - Con `ley-20584`: dónde aparece "ficha clínica" o "historia clínica" (textos visibles, PDFs, nombres de
   campos y rutas); qué guarda ese registro y quién lo escribe; permisos de lectura, log de accesos,
   versionado de cambios, exportación al titular y retención automática.
+- Con `ley-20500` y `tributario`: registro de socios con historial, retiro voluntario, actas, cómo se calcula el
+  aporte (¿por gramo?) y si la retención o la supresión borran respaldos de pagos antes de seis años.
 
 ### Fase 2 — Evaluar controles y RESOLVER decisiones
 Para cada control de `references/controls.md`: estado (✅/⚠️/❌/❓) + evidencia + remediación. Un control
@@ -93,6 +102,9 @@ se propaga a todos los marcos que lo exigen.
   fuera del alcance de la skill.
 - **¿El registro es una ficha clínica?** (`ley-20584`): **sí se resuelve**, con el test de
   `packs/ley-20584/pack.md` (Ley 20.584 Arts. 3 y 12). Si no lo es, no se le llama así en ningún texto.
+- **¿Quién está obligado por la Ley 21.663?** **Sí se resuelve**, con la tabla de `packs/ley-21663/pack.md`.
+- **Licitud de los fines (`ley-20500`) e IVA del aporte (`tributario`): nunca se resuelven.** El fundamento
+  constitucional (Art. 19 N° 1, 9 y 15) se documenta como argumento con evidencia por eslabón, no como regla.
 
 ### Fase 3 — Generar TODA la documentación (rellenada)
 Por cada pack activo, leer su `pack.md` y generar **todos** sus `templates/`, **rellenados con las
@@ -101,7 +113,8 @@ canal-derechos, dpa, anexo-transferencias, plan-respuesta-brechas, registro-vuln
 test la hace obligatoria). Para `ley-21595`: modelo-prevencion-delitos, código-etica, matriz-riesgos,
 acta-encargado-prevencion, reglamento-canal-denuncias. Para `sanitario-cannabis`: fundamento-modelo-operativo,
 politica-receta, registro-trazabilidad, y bitacora-sag (solo con cultivo autorizado). Para `ley-20584`:
-clasificacion-registro, y politica-ficha-clinica (solo si el registro es ficha clínica). Reemplazar todos los placeholders; usar
+clasificacion-registro, y politica-ficha-clinica (solo si el registro es ficha clínica). Para `ley-20500`:
+gobierno-asociativo. Reemplazar todos los placeholders; usar
 `[COMPLETAR: ...]` solo para lo realmente desconocido.
 
 ### Fase 4 — Escribir el estado versionado
@@ -142,7 +155,8 @@ re-corridas periódicas** (`references/revisiones-periodicas.md`) para detectar 
   `references/build/index.md`.
 - `references/revisiones-periodicas.md` — automatizar la re-corrida (`/loop`, cron headless `claude -p`,
   `/schedule`) para detectar drift entre corridas.
-- `packs/ley-21719/`, `packs/ley-21595/`, `packs/sanitario-cannabis/`, `packs/ley-20584/` — obligaciones +
+- `packs/ley-21719/`, `packs/ley-21595/`, `packs/sanitario-cannabis/`, `packs/ley-20584/`, `packs/ley-20500/`,
+  `packs/tributario/`, `packs/ley-21663/`, `packs/ley-19628/` — obligaciones +
   plantillas por marco.
 - `sources/` — textos legales oficiales (ley 21.719 PDF/txt, cláusulas modelo, XML) + `FUENTES.md`.
   ⚠️ Para **retener** datos hace falta el **Código Tributario** y el **Código del Trabajo**, que NO se

@@ -162,6 +162,34 @@ Arts. 1-12. Los montos de sanción del DFL 1/2006 Salud (al que remite el Art. 3
 curl -sL -A "$UA" "https://www.leychile.cl/Consulta/obtxml?opt=7&idNorma=1039348" -o sources/.cache/ley-20584.xml
 ```
 
+## Packs ley-20500, tributario, ley-21663 y ley-19628 (descargados 2026-11-06, no se versionan)
+
+Misma política y receta. La Ley 19.628 ya está versionada arriba (`ley-19628-consolidada.xml`).
+
+| Archivo en caché | Norma | idNorma | Versión del texto | SHA-256 (trunc.) |
+|---|---|---|---|---|
+| `constitucion.xml` | Constitución Política (texto refundido) | 242302 | 2026-04-16 | `f49fa004…` |
+| `ley-20500.xml` | Ley 20.500, asociaciones y participación ciudadana | 1023143 | 2011-02-16 | `3e4c4cf2…` |
+| `codigo-civil.xml` | Código Civil (Título XXXIII del Libro I) | 172986 | marca BCN `2222-02-02` (versión diferida; artículos leídos en versión 2011-02-16) | `979bb1e1…` |
+| `codigo-tributario-dl830.xml` | Código Tributario (DL 830) | 6374 | 2026-10-17 | `65690ff2…` |
+| `dl-825-iva.xml` | DL 825, Impuesto a las Ventas y Servicios | 6369 | 2026-02-05 | `18b43c10…` |
+| `dl-824-renta.xml` | DL 824, Impuesto a la Renta | 6368 | 2026-10-17 | `c0fd6276…` |
+| `ley-21663.xml` | Ley 21.663, Ley Marco de Ciberseguridad | 1202434 | 2024-04-08 | `2302f990…` |
+
+Leídos artículo por artículo: Constitución Art. 19 N° 1, 9, 15 y 21; Ley 20.500 Arts. 1-11, 15 y 16; Código Civil
+Arts. 545, 548 a 548-4, 549, 550, 551 a 551-2, 556, 557 a 557-3, 558 y 559; Código Tributario Arts. 17 y 200; DL 825
+Art. 2; DL 824 Art. 40; Ley 21.663 Arts. 1, 4-9; Ley 19.628 Arts. 2, 4, 7, 10, 11, 12 y 16. **No leídos:** artículos
+transitorios de la Ley 21.663 (vigencia escalonada) y circulares u oficios del SII.
+
+**Ojo con `constitucion.xml`:** el texto viene intercalado con anotaciones de margen ("CPR Art. 19° N° 9",
+"D.O. 24.10.1980") en medio de las frases. Para verificar una cita, quitar esas anotaciones antes de comparar.
+
+```bash
+for pair in 242302:constitucion 1023143:ley-20500 172986:codigo-civil 6374:codigo-tributario-dl830             6369:dl-825-iva 6368:dl-824-renta 1202434:ley-21663; do
+  curl -sL -A "$UA" "https://www.leychile.cl/Consulta/obtxml?opt=7&idNorma=${pair%%:*}" -o "sources/.cache/${pair#*:}.xml"; sleep 20
+done
+```
+
 ## Regla de uso para la skill
 1. Antes de afirmar algo legal, búscalo en estos archivos (PDF completo > XML).
 2. Cita siempre **ley + artículo + archivo fuente**.

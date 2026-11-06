@@ -14,7 +14,22 @@ cambio de ley, de reglamento o de modelo operativo.
 - ¿Entrega cannabis a personas distintas de quien cultiva? [sí/no] · ¿A quiénes? [socios con receta / otros]
 - ¿Maneja productos farmacéuticos registrados en el ISP? [sí/no]
 
-## 2. Cada paso y su apoyo normativo
+## 2. Por qué cultivo colectivo: la cadena del argumento
+Cada eslabón necesita evidencia propia: el argumento vale lo que vale su eslabón más débil. Citas textuales en
+`packs/ley-20500/pack.md` ("Por qué existe la OSFL").
+
+| # | Eslabón | Norma | Evidencia que lo sostiene |
+|---|---|---|---|
+| 1 | Cada socio tiene una receta vigente que cumple los cinco requisitos | Ley 20.000 Art. 8 inc. 2 | [registro de recetas validadas] |
+| 2 | Ese tratamiento no está disponible por la vía estatal ni privada | Constitución Art. 19 N° 9 | [COMPLETAR: p. ej. ausencia de producto registrado equivalente en farmacia, costo, rechazo de cobertura] |
+| 3 | Los socios se asociaron libremente para hacerse cargo | Constitución Art. 19 N° 15; Ley 20.500 Arts. 1 y 3 | [estatutos con los fines, registro de socios] |
+| 4 | El cultivo colectivo protege su salud e integridad | Constitución Art. 19 N° 1 y N° 9 | [COMPLETAR] |
+| 5 | Lo cultivado va solo a cumplir esas recetas | Ley 20.000 Arts. 4 y 50; CC Art. 556 (sin lucro) | [balance de masa: cultivado = entregado a titulares + merma + destrucción] |
+
+La Constitución no menciona el cultivo colectivo: esta cadena es un argumento, no una regla expresa. Su límite está
+en la pregunta 1 de la sección 4.
+
+## 3. Cada paso y su apoyo normativo
 
 | Paso | Qué se hace | Norma en que se apoya | Estado |
 |---|---|---|---|
@@ -25,7 +40,7 @@ cambio de ley, de reglamento o de modelo operativo.
 | Contribución económica | [aporte, cuota social] | — (ver pregunta 1) | |
 | Información pública | [sitio, catálogo, redes] | Código Sanitario Art. 100 inc. 2; Ley 20.000 Art. 3 | |
 
-## 3. Preguntas abiertas `[criterio jurídico]`
+## 4. Preguntas abiertas `[criterio jurídico]`
 Marcar cada una como **abierta**, **consultada** (a quién y cuándo) o **resuelta** (con el documento que la
 resuelve). Ninguna se marca resuelta por un software.
 
@@ -36,7 +51,7 @@ resuelve). Ninguna se marca resuelta por un software.
 | 3 | ¿El producto entregado es "producto farmacéutico" para el Código Sanitario? | CS Arts. 100 y 101; DS 404 Art. 5 | [abierta] |
 | 4 | ¿El catálogo o sitio público es publicidad o promoción del uso? | CS Art. 100 inc. 2; Ley 20.000 Art. 3 | [abierta] |
 
-## 4. Medidas que reducen el riesgo mientras las preguntas siguen abiertas
+## 5. Medidas que reducen el riesgo mientras las preguntas siguen abiertas
 - Entregar solo al titular de una receta vigente que cumpla los cinco requisitos del Art. 8 inc. 2.
 - Llevar la cadena cultivo → lote → entrega con balance de masa y destrucción registrada (desvío: Art. 10).
 - No ofrecer la combustión como forma de administración.

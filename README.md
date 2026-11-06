@@ -57,7 +57,10 @@ Corres `/compliance-cl` sobre tu repo y:
 | `ley-21595` | Delitos Económicos (MPD) | **ya vigente** | modelo de prevención, código de ética, matriz de riesgos |
 | `sanitario-cannabis` | Ley 20.000, DS 867, DS 404/405, Decreto 84/2015, Código Sanitario | **ya vigente** | receta (Art. 8 inc. 2), entrega personal, trazabilidad, no combustión, publicidad, autorización SAG |
 | `ley-20584` | Derechos del paciente + DS 41/2012 | **ya vigente** | si tu registro es ficha clínica, contenido mínimo, acceso, 15 años, portabilidad, consentimiento informado |
-| _próximos_ | Ley 20.500 · Ley 21.663 · Código Tributario · Ley 19.628 (transitoria) | roadmap | OSFL sin fines de lucro, ciberseguridad, retención, ley de datos vigente hasta dic-2026 |
+| `ley-20500` | Ley 20.500 + Código Civil Título XXXIII + Constitución Art. 19 N° 1, 9 y 15 | **ya vigente** | la OSFL como asociación: fundamento del cultivo colectivo, estatutos, socios, actas, sin lucro |
+| `tributario` | Código Tributario, DL 825 (IVA), DL 824 (Renta) | **ya vigente** | conservación seis años, aporte frente a venta, exención de renta |
+| `ley-21663` | Ley Marco de Ciberseguridad | escalonada | quién está obligado (el proveedor SaaS puede serlo), reporte al CSIRT en 3 h / 72 h / 15 días |
+| `ley-19628` | Protección de la vida privada | **vigente hasta 1-dic-2026** | datos de salud solo con consentimiento escrito, respuesta en dos días hábiles |
 
 El pack sanitario **no dice si un modelo de cultivo o de entrega es legal**: deja por escrito las preguntas
 que exigen criterio jurídico (por ejemplo, la entrega a socios frente a la Ley 20.000 Art. 4 inc. 2 y el
@@ -114,6 +117,8 @@ packs/
   ley-21719/  ley-21595/          # obligaciones + plantillas por marco
   sanitario-cannabis/             # Ley 20.000, DS 867, DS 404/405, Código Sanitario
   ley-20584/                      # derechos del paciente y ficha clínica (DS 41/2012)
+  ley-20500/  tributario/         # la OSFL como asociación; SII
+  ley-21663/  ley-19628/          # ciberseguridad; ley de datos vigente hasta dic-2026
 scripts/bcn_article.py            # lee un artículo del XML oficial de la BCN para verificar citas
 sources/                          # textos legales oficiales + FUENTES.md (reproducible)
 ```
@@ -123,7 +128,7 @@ sources/                          # textos legales oficiales + FUENTES.md (repro
 - [ ] Completar el mapa de artículos (transferencias internacionales, MPD/DPO).
 - [x] Pack `sanitario-cannabis`.
 - [x] Pack `ley-20584`.
-- [ ] Packs del cannabis medicinal: `ley-20500`, `ley-21663`, `tributario`, `ley-19628`.
+- [x] Packs `ley-20500`, `tributario`, `ley-21663`, `ley-19628`.
 - [ ] Packs nuevos: GDPR, ISO 27001, SOC 2.
 - [ ] Mejor detección de cambios entre corridas.
 - [ ] Revisión legal opcional de las plantillas (un plus, no un requisito).

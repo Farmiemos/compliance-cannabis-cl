@@ -77,6 +77,50 @@ test del pack da Resultado A (el registro es una ficha clínica).
 | `pac-consentimiento` | Consentimiento informado escrito en la ficha cuando el riesgo lo exige; en salud digital, con firma conforme a la Ley 19.799 | Ley 20.584 Art. 14 | — | registro de aceptación o rechazo con fecha, contenido informado y firma |
 | `pac-reclamos` | Sistema de registro y respuesta escrita de reclamos (prestador institucional) | Ley 20.584 Art. 37 | `gov-denuncias` | canal, registro y respuesta; usuario |
 
+## Controles del pack `ley-20500`
+
+Citas textuales en `packs/ley-20500/pack.md`.
+
+| id | Control | Norma | Reutiliza | Cómo se verifica en el código |
+|----|---------|-------|-----------|-------------------------------|
+| `osfl-estatutos` | Estatutos inscritos con fines, derechos y deberes de socios, incorporación y exclusión | CC Arts. 548 y 548-2; Ley 20.500 Arts. 5 y 8 | — | inscripción en el Registro Nacional; usuario |
+| `osfl-registro-socios` | Registro de socios, directores y autoridades permanentemente actualizado | CC Art. 557-3 | `gov-registro` | altas, bajas y cambios de estado con fecha y autor; historial que no se borra |
+| `osfl-afiliacion-libre` | El socio se retira cuando quiere, sin trabas | Ley 20.500 Art. 3 | `data-derechos` | acción de retiro disponible al socio; sin bloqueo por deuda ni plazo de permanencia |
+| `osfl-cuentas-socios` | Todo socio accede al estado de cuentas, actividades y programas | Ley 20.500 Art. 4; CC Art. 551 | — | vista o informe de cuentas para socios |
+| `osfl-actas` | Actas de directorio y asamblea en un registro que asegura su fidelidad | CC Art. 557-3 | `sec-logs` | actas versionadas o selladas (hash), sin edición posterior silenciosa |
+| `osfl-sin-lucro` | Aportes fijados por la asamblea; excedentes solo a los fines, nunca repartidos | CC Arts. 556 y 557-2 | `ctrl-interno` | aportes ligados a un acuerdo de asamblea; sin pagos a socios fuera de gastos o remuneraciones informadas |
+| `osfl-contabilidad` | Contabilidad, memoria y balance anual aprobados por la asamblea | CC Art. 557-1 | — | exportación contable; usuario |
+| `osfl-directorio` | Directorio de al menos tres, sin condenados a pena aflictiva; remuneraciones informadas a la asamblea | CC Arts. 551 y 551-1 | `gov-responsable` | registro del directorio y de sus remuneraciones; usuario |
+
+## Controles del pack `tributario`
+
+Citas textuales en `packs/tributario/pack.md`.
+
+| id | Control | Norma | Reutiliza | Cómo se verifica en el código |
+|----|---------|-------|-----------|-------------------------------|
+| `trib-conservacion` | Registros de aportes, compras y gastos conservados al menos seis años, aunque el titular pida suprimirlos | Código Tributario Arts. 17 y 200 | `data-minimizacion` | la retención y la supresión no borran respaldos tributarios antes del plazo |
+| `trib-aporte-trazable` | Cada aporte queda ligado a su acuerdo de asamblea y separado de la entrega de cannabis | DL 825 Art. 2 N° 1; CC Art. 556 | `osfl-sin-lucro` | el monto no se calcula por gramo entregado `[criterio jurídico]` |
+| `trib-documento` | Cada ingreso tiene el documento tributario que corresponda | DL 825 Art. 2; DL 824 Art. 40 N° 4 | — | registro del documento emitido por ingreso; usuario `[criterio jurídico]` |
+
+## Controles del pack `ley-21663`
+
+Citas textuales en `packs/ley-21663/pack.md`.
+
+| id | Control | Norma | Reutiliza | Cómo se verifica en el código |
+|----|---------|-------|-----------|-------------------------------|
+| `ciber-calificacion` | Está determinado si la organización o el proveedor es servicio esencial u OIV, con la resolución que lo dice | Ley 21.663 Arts. 4-6 | — | usuario: resolución de la Agencia revisada y fecha |
+| `ciber-reporte-csirt` | Procedimiento de reporte al CSIRT Nacional: 3 horas, 72 horas y 15 días (si está obligado) | Ley 21.663 Art. 9 | `inc-brechas`, `sec-monitoring` | plan de respuesta con los tres plazos y responsables |
+| `ciber-sgsi-oiv` | Sistema de gestión de seguridad de la información y planes certificados (solo OIV) | Ley 21.663 Art. 8 | `gov-auditoria` | usuario |
+
+## Controles del pack `ley-19628` (transitorio, hasta el 1-dic-2026)
+
+Citas textuales en `packs/ley-19628/pack.md`.
+
+| id | Control | Norma | Reutiliza | Cómo se verifica en el código |
+|----|---------|-------|-----------|-------------------------------|
+| `t19628-base-sensible` | Los datos de salud se tratan solo con consentimiento escrito e informado o autorización legal | Ley 19.628 Arts. 4 y 10 | `data-licitud`, `data-consent-text` | consentimiento registrado antes de guardar diagnóstico o receta |
+| `t19628-plazo-derechos` | Las solicitudes del titular se responden dentro de dos días hábiles | Ley 19.628 Art. 16 | `data-rights-channel` | plazo de respuesta configurado y alertado |
+
 ## Cómo usarlo
 1. En Fase 1, junta evidencia para cada `id` que tengan los packs activos.
 2. En Fase 2, asigna estado + evidencia + remediación por control.
