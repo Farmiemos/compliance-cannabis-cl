@@ -28,4 +28,4 @@ terceros sin garantías, y colaborar ante solicitudes de los titulares y de la A
 Esta transferencia se declara en la política de privacidad ("Con quién compartimos los datos").
 
 ---
-*Borrador generado con compliance-cl (pack ley-21719). No constituye asesoría legal; revisar con un abogado.*
+*Borrador generado con compliance-cannabis-cl (pack ley-21719). No constituye asesoría legal; revisar con un abogado.*

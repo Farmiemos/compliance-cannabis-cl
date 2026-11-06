@@ -16,4 +16,4 @@
 - Revisar al menos cada 12 meses o ante cambios de infraestructura.
 
 ---
-*Borrador generado con compliance-cl (pack ley-21719). No constituye asesoría legal; revisar con un abogado.*
+*Borrador generado con compliance-cannabis-cl (pack ley-21719). No constituye asesoría legal; revisar con un abogado.*

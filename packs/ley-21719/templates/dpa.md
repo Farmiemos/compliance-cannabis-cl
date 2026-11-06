@@ -39,4 +39,4 @@ _____________________________  _____________________________
 [NOMBRE, RUT]                   [NOMBRE, RUT]
 
 ---
-*Borrador generado con compliance-cl (pack ley-21719). No constituye asesoría legal; revisar con un abogado antes de firmar.*
+*Borrador generado con compliance-cannabis-cl (pack ley-21719). No constituye asesoría legal; revisar con un abogado antes de firmar.*

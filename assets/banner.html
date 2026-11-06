@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<!-- Source of assets/hero.png (1280x640). Render:
+     chrome --headless --hide-scrollbars --window-size=1280,640 --virtual-time-budget=8000 --screenshot=assets/hero.png assets/banner.html -->
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Cal+Sans&family=Montserrat:wght@400;500;600&family=JetBrains+Mono:wght@500&display=block" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1280px; height: 640px; }
+  body {
+    background: #0d0d0d; color: #f0f0f0; position: relative; overflow: hidden;
+    font-family: "Montserrat", system-ui, sans-serif;
+  }
+  .grid {
+    position: absolute; inset: 0;
+    background-image: radial-gradient(rgba(255,255,255,0.05) 1.2px, transparent 1.2px);
+    background-size: 28px 28px;
+  }
+  .accent { position: absolute; top: 0; left: 0; right: 0; height: 3px; background: #f0f0f0; }
+  .ghost {
+    position: absolute; right: -10px; top: -60px; font-family: "Cal Sans", sans-serif;
+    font-size: 300px; color: #fff; opacity: 0.03; letter-spacing: -8px; line-height: 1;
+  }
+  .wrap { position: absolute; inset: 0; padding: 0 80px; display: flex; align-items: center; gap: 56px; }
+  .mark { flex: none; width: 280px; display: flex; flex-direction: column; align-items: center; }
+  .mark img { width: 280px; height: auto; display: block; }
+  .text { flex: 1; min-width: 0; }
+  .eyebrow {
+    font-family: "JetBrains Mono", monospace; font-size: 22px; letter-spacing: 3px;
+    text-transform: uppercase; color: #aaa;
+  }
+  h1 {
+    font-family: "Cal Sans", sans-serif; font-weight: 400; font-size: 66px; white-space: nowrap;
+    letter-spacing: -2px; line-height: 1; margin-top: 18px; color: #fff;
+  }
+  .tag { font-size: 30px; font-weight: 600; line-height: 1.25; margin-top: 22px; color: #f0f0f0; }
+  .sub { font-size: 23px; line-height: 1.35; margin-top: 12px; color: #c8c8c8; }
+  .chips { display: flex; gap: 12px; margin-top: 30px; flex-wrap: wrap; }
+  .chip {
+    font-family: "JetBrains Mono", monospace; font-size: 20px; padding: 10px 18px;
+    border-radius: 999px; background: #1a1a1a; border: 1px solid #3a3a3a; color: #f0f0f0;
+  }
+  .foot {
+    position: absolute; left: 80px; right: 80px; bottom: 34px; display: flex; justify-content: space-between;
+    font-family: "JetBrains Mono", monospace; font-size: 22px; color: #999;
+  }
+  .foot b { color: #f0f0f0; font-weight: 500; }
+</style>
+</head>
+<body>
+  <div class="grid"></div>
+  <div class="accent"></div>
+  <div class="ghost">RX</div>
+  <div class="wrap">
+    <div class="mark"><img src="brand/dispensai-isotipo-white.svg" alt="DispensAI"></div>
+    <div class="text">
+      <div class="eyebrow">Skill open source · Claude Code</div>
+      <h1>compliance-cannabis-cl</h1>
+      <div class="tag">Cumplimiento normativo para el cannabis medicinal en Chile</div>
+      <div class="sub">Lee tu código, arma los documentos y cita cada artículo contra el texto oficial.</div>
+      <div class="chips">
+        <span class="chip">8 packs</span>
+        <span class="chip">65 controles</span>
+        <span class="chip">citas verificadas · BCN + SII</span>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>Ley 20.000 · 20.584 · 20.500 · 21.719 · 21.663 · SII</span><span>por <b>DispensAI</b> · dispensai.cl</span></div>
+</body>
+</html>

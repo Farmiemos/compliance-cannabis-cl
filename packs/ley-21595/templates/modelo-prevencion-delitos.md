@@ -44,4 +44,4 @@ El Encargado supervisa el modelo y lo actualiza al menos [anualmente] o ante cam
 del negocio. Deja registro de las revisiones.
 
 ---
-*Borrador generado con compliance-cl (pack ley-21595). No constituye asesoría legal; revisar con un abogado.*
+*Borrador generado con compliance-cannabis-cl (pack ley-21595). No constituye asesoría legal; revisar con un abogado.*

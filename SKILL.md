@@ -10,8 +10,8 @@ description: >-
   medicinal en Chile, contrastada contra el texto oficial de la ley. Cubre la Ley 21.719, la 21.595 y el
   pack sanitario-cannabis (Ley 20.000, DS 867, DS 404/405, Decreto 84/2015, Código Sanitario) y los packs
   ley-20584 (ficha clínica), ley-20500 (la OSFL como asociación), tributario, ley-21663 (ciberseguridad) y
-  ley-19628 (transitorio). Derivada
-  de compliance-cl de Lelemon (MIT).
+  ley-19628 (transitorio). Mantenida por
+  DispensAI (dispensai.cl).
 license: MIT
 allowed-tools:
   - Read
@@ -23,7 +23,7 @@ allowed-tools:
   - AskUserQuestion
 ---
 
-# compliance-cl — Motor de cumplimiento (Chile), multi-marco y self-service
+# compliance-cannabis-cl — Motor de cumplimiento (Chile), multi-marco y self-service
 
 Auditar una aplicación contra uno o varios **packs** de ley, **resolver las decisiones** con el criterio
 de la ley y **generar toda la documentación rellenada** (sin dejar tarea), dejando un **estado versionado**

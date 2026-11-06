@@ -35,4 +35,4 @@
   (Ley 20.000 Art. 4 inc. 2).
 
 ---
-*Borrador generado con compliance-cl (pack sanitario-cannabis). No constituye asesoría legal: un software no asume la responsabilidad legal del usuario.*
+*Borrador generado con compliance-cannabis-cl (pack sanitario-cannabis). No constituye asesoría legal: un software no asume la responsabilidad legal del usuario.*

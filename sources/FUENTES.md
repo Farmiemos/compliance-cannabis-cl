@@ -34,11 +34,6 @@ curl -L -A "$UA" "https://www.leychile.cl/Consulta/obtxml?opt=7&idNorma=207436" 
 sha256sum codigo-*.xml   # deben partir con los prefijos de la tabla
 ```
 
-**Si trabajas en Lelemon hay un atajo mejor:** el corpus legal interno ya los tiene **por artículo, en
-Markdown, con frontmatter de vigencia e historial de versiones** (`normas/leyes/dl-830-codigo-tributario/`,
-`normas/laboral-previsional/dfl-1-codigo-trabajo/`). Es más cómodo de citar que el XML crudo. Es privado, así
-que no se referencia por URL acá.
-
 ## Notas de validez (IMPORTANTE)
 - **La 21.719 MODIFICA la Ley 19.628**: el articulado sustantivo de datos (consentimiento,
   encargado, transferencias, Agencia, sanciones) entra en vigor **1-dic-2026** y se lee del **PDF del

@@ -59,4 +59,4 @@ resuelve). Ninguna se marca resuelta por un software.
 - Guardar la receta como dato sensible reservado (CS Art. 101).
 
 ---
-*Borrador generado con compliance-cl (pack sanitario-cannabis). No constituye asesoría legal: un software no asume la responsabilidad legal del usuario.*
+*Borrador generado con compliance-cannabis-cl (pack sanitario-cannabis). No constituye asesoría legal: un software no asume la responsabilidad legal del usuario.*

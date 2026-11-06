@@ -30,4 +30,4 @@ Guarda por cada titular: qué aceptó, cuándo, cómo (IP/timestamp), y la versi
 La **carga de la prueba del consentimiento es del responsable** (Art. 12).
 
 ---
-*Borrador generado con compliance-cl (pack ley-21719). No constituye asesoría legal; revisar con un abogado.*
+*Borrador generado con compliance-cannabis-cl (pack ley-21719). No constituye asesoría legal; revisar con un abogado.*

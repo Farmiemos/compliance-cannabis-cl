@@ -10,7 +10,7 @@ quién se autentica y quién paga** en cada una (lo verifican mal seguido):
 ## 1. `/loop` — dentro de una sesión abierta
 Repite un prompt mientras la terminal está abierta. Útil para algo puntual, no para dejar corriendo.
 ```
-/loop 1d /compliance-cl
+/loop 1d /compliance-cannabis-cl
 ```
 - Sin intervalo Claude elige uno; con intervalo (`5m`, `1h`, `1d`) corre fijo.
 - **Cuenta:** corre en tu sesión, con la credencial que ya usa tu Claude Code.
@@ -40,7 +40,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: anthropics/claude-code-action@v1
         with:
-          prompt: "audita el cumplimiento de este repo con la skill compliance-cl"
+          prompt: "audita el cumplimiento de este repo con la skill compliance-cannabis-cl"
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
       # luego: subir el .compliance/ actualizado como artifact o abrir un PR con el diff
@@ -69,7 +69,7 @@ tu máquina prendida.
 > API aunque estés logueado en Pro/Max**. Verifica con `/status` en Claude Code.
 
 ## Cadencia sugerida
-- **Re-auditoría completa** (`/compliance-cl`): mensual o trimestral, y antes de un release grande.
+- **Re-auditoría completa** (`/compliance-cannabis-cl`): mensual o trimestral, y antes de un release grande.
 - **Watcher** (filtraciones/secretos/eventos del audit log): más seguido (diario/semanal) — ver `build/monitoreo.md`.
 - **Disparada por evento:** además del cron, correrla cuando cambia el modelo de datos o se suma un proveedor.
 

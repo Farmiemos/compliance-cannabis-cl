@@ -21,4 +21,4 @@
   Art. 14 y se guarda el acta.
 
 ---
-*Borrador generado con compliance-cl (pack sanitario-cannabis). No constituye asesoría legal: un software no asume la responsabilidad legal del usuario.*
+*Borrador generado con compliance-cannabis-cl (pack sanitario-cannabis). No constituye asesoría legal: un software no asume la responsabilidad legal del usuario.*

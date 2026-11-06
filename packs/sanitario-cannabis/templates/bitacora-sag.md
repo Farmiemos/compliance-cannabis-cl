@@ -18,4 +18,4 @@ también si la causal afecta a representantes legales, administradores o socios 
 anónimas). Comprobar antes de cada renovación y cada vez que cambie un administrador.
 
 ---
-*Borrador generado con compliance-cl (pack sanitario-cannabis). No constituye asesoría legal: un software no asume la responsabilidad legal del usuario.*
+*Borrador generado con compliance-cannabis-cl (pack sanitario-cannabis). No constituye asesoría legal: un software no asume la responsabilidad legal del usuario.*

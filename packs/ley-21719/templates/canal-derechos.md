@@ -28,4 +28,4 @@
 Informa el motivo legal. El titular puede reclamar ante la **Agencia de Protección de Datos**.
 
 ---
-*Borrador generado con compliance-cl (pack ley-21719). No constituye asesoría legal; revisar con un abogado.*
+*Borrador generado con compliance-cannabis-cl (pack ley-21719). No constituye asesoría legal; revisar con un abogado.*

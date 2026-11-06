@@ -27,4 +27,4 @@ Deja constancia documentada de cada caso y su resolución.
 Se mantiene un registro confidencial de denuncias, estado y resultado, para la supervisión del modelo.
 
 ---
-*Borrador generado con compliance-cl (pack ley-21595). No constituye asesoría legal; revisar con un abogado.*
+*Borrador generado con compliance-cannabis-cl (pack ley-21595). No constituye asesoría legal; revisar con un abogado.*

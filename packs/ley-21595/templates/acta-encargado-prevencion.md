@@ -29,4 +29,4 @@ _______________________________
 [NOMBRE] — Administración / Representante Legal, [RAZÓN SOCIAL]
 
 ---
-*Borrador generado con compliance-cl (pack ley-21595). No constituye asesoría legal; revisar con un abogado.*
+*Borrador generado con compliance-cannabis-cl (pack ley-21595). No constituye asesoría legal; revisar con un abogado.*

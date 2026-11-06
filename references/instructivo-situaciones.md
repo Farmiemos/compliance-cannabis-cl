@@ -39,7 +39,7 @@ Este es el único caso donde conviene un **[ABOGADO]** (la representación es re
 ## D. Cambia la ley o sale un reglamento (ej. DS 662)
 1. Actualiza el corpus en `sources/` (re-descarga, ver `sources/FUENTES.md`).
 2. Ajusta el pack afectado y los controles.
-3. Re-corre `/compliance-cl` → el `state.json` muestra qué cambió.
+3. Re-corre `/compliance-cannabis-cl` → el `state.json` muestra qué cambió.
 
 ## E. Calendario de revisión
 | Cuándo | Qué | Quién |
@@ -48,7 +48,7 @@ Este es el único caso donde conviene un **[ABOGADO]** (la representación es re
 | Anual | **Supervisión externa del MPD** (21.595, obligatoria) | consultor/tercero independiente |
 | Anual | Capacitación del equipo | Responsable |
 | Al firmar/renovar proveedor | DPA + anexo de transferencia (cláusulas modelo) | Responsable |
-| Cada release relevante | Re-correr `/compliance-cl` (drift) | Dev |
+| Cada release relevante | Re-correr `/compliance-cannabis-cl` (drift) | Dev |
 
 ---
-*Guía operativa de compliance-cl. No es asesoría legal.*
+*Guía operativa de compliance-cannabis-cl. No es asesoría legal.*

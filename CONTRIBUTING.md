@@ -1,4 +1,4 @@
-# Contribuir a compliance-cl
+# Contribuir a compliance-cannabis-cl
 
 ¡Gracias por aportar! Este proyecto ayuda a empresas chilenas a preparar su cumplimiento legal.
 

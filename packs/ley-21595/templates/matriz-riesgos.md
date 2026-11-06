@@ -20,4 +20,4 @@
 - Para procesos sin control aún, ese es el plan de remediación.
 
 ---
-*Borrador generado con compliance-cl (pack ley-21595). No constituye asesoría legal; revisar con un abogado.*
+*Borrador generado con compliance-cannabis-cl (pack ley-21595). No constituye asesoría legal; revisar con un abogado.*

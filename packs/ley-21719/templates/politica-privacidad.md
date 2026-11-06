@@ -50,4 +50,4 @@ Podemos actualizar esta política; publicaremos la versión vigente con su fecha
 Puedes reclamar ante la **Agencia de Protección de Datos Personales** de Chile.
 
 ---
-*Borrador generado con compliance-cl (pack ley-21719). No constituye asesoría legal; revisar con un abogado antes de publicar.*
+*Borrador generado con compliance-cannabis-cl (pack ley-21719). No constituye asesoría legal; revisar con un abogado antes de publicar.*

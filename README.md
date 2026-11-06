@@ -1,14 +1,14 @@
 <div align="center">
 
-<img src="assets/hero.png" alt="compliance-cannabis-cl" width="100%">
+<img src="assets/hero.png" alt="compliance-cannabis-cl, por DispensAI" width="100%">
 
 # compliance-cannabis-cl
 
 ### Cumplimiento para trabajar con cannabis medicinal en Chile, desde la terminal
 
-> Derivada de [compliance-cl](https://github.com/Lelemon-studio/compliance-cl) de Lelemon (MIT). A los packs de
-> datos personales y delitos económicos les suma lo que pide el ecosistema del cannabis medicinal: la ley sanitaria,
-> los derechos del paciente, la OSFL como asociación, el SII y la ciberseguridad.
+> Mantenida por [DispensAI](https://dispensai.cl). Es la skill con la que validamos el cumplimiento de nuestro
+> software, y la abrimos a la comunidad: asociaciones de pacientes, cultivos autorizados, prestadores de salud y
+> quien construya software para ellos.
 
 Una skill de [Claude Code](https://claude.ai/code) que lee tu código, arma los documentos de cumplimiento y te
 dice, artículo por artículo, qué cumples, qué falta y qué preguntas necesitan criterio jurídico. Cada cita está
@@ -226,4 +226,5 @@ cannabis medicinal varias preguntas centrales no tienen respuesta zanjada; la sk
 
 ## Licencia
 
-[MIT](LICENSE) © 2026 Lelemon SpA. Obra derivada: ver [`NOTICE.md`](NOTICE.md).
+[MIT](LICENSE) © 2026 DispensAI. Los packs de datos personales y delitos económicos nacen de
+[compliance-cl](https://github.com/Lelemon-studio/compliance-cl) (MIT © 2026 Lelemon SpA); ver [`NOTICE.md`](NOTICE.md).

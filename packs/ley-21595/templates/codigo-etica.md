@@ -36,4 +36,4 @@ legales que correspondan.
 [RAZÓN SOCIAL] difunde este código y deja constancia de su aceptación por el personal.
 
 ---
-*Borrador generado con compliance-cl (pack ley-21595). No constituye asesoría legal; revisar con un abogado.*
+*Borrador generado con compliance-cannabis-cl (pack ley-21595). No constituye asesoría legal; revisar con un abogado.*

@@ -40,4 +40,4 @@ Riesgo residual aceptable: [sí/no]. Si queda alto pese a las medidas, la ley co
 a la Agencia** antes de iniciar el tratamiento.
 
 ---
-*Borrador generado con compliance-cl (pack ley-21719). No constituye asesoría legal; revisar con un abogado.*
+*Borrador generado con compliance-cannabis-cl (pack ley-21719). No constituye asesoría legal; revisar con un abogado.*
