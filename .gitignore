@@ -1,0 +1,3 @@
+# Official BCN texts are downloaded locally to verify citations, never redistributed (see sources/FUENTES.md).
+sources/.cache/
+__pycache__/

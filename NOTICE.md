@@ -9,3 +9,11 @@ El contenido legal se contrasta contra los textos oficiales incluidos en `source
 cambian y la interpretación requiere criterio profesional. Ver `references/cuando-acudir-a-abogado.md`.
 
 Distribuido bajo licencia [MIT](LICENSE) © 2026 Lelemon SpA.
+
+## Obra derivada
+
+`compliance-cannabis-cl` deriva de [compliance-cl](https://github.com/Lelemon-studio/compliance-cl) de
+Lelemon SpA (licencia MIT, se conserva su aviso de copyright en `LICENSE`). Agrega el pack
+`sanitario-cannabis` y los packs del cannabis medicinal en Chile. Ese pack tampoco constituye asesoría legal
+y, a diferencia de los otros, **no resuelve** si un modelo de cultivo o entrega es legal: deja las preguntas
+abiertas por escrito (ver `packs/sanitario-cannabis/pack.md`).

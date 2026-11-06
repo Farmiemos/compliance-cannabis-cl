@@ -42,6 +42,24 @@ que hace genérico al motor: para agregar un marco nuevo, se le suman columnas a
 | `ctrl-interno` | Control interno: segregación de funciones / autorizaciones | — | Sí | ISO A.5.x / SOC2 CC | usuario + código |
 | `sec-monitoring` | Monitoreo y alertas (audit log, secretos, errores) | detección de brechas | detección delitos informáticos | SOC2 CC7 | infra + usuario |
 
+## Controles del pack `sanitario-cannabis`
+
+Citas textuales y archivo de caché en `packs/sanitario-cannabis/pack.md`. La columna "21.719" indica cuando el
+mismo control también cuenta para datos personales (se evalúa una vez).
+
+| id | Control | Norma sanitaria | 21.719 | Cómo se verifica en el código |
+|----|---------|-----------------|--------|-------------------------------|
+| `san-receta-requisitos` | La receta registrada exige emisor médico cirujano, diagnóstico, tratamiento, duración y forma de administración | Ley 20.000 Art. 8 inc. 2 | — | campos obligatorios en el esquema y en la validación; rechazo si falta alguno |
+| `san-receta-vigencia` | No se entrega fuera del período del tratamiento | Ley 20.000 Art. 8 inc. 2 ("duración"); CS Art. 101 ("período de tiempo determinado") | — | la entrega consulta la fecha de término y bloquea; prueba con receta vencida |
+| `san-receta-autenticidad` | La receta se verifica contra su emisor o sistema y se detecta la falsificación | Ley 20.000 Art. 8 inc. 2 (receta falsa); CS Art. 101 (elementos contra la falsificación) | — | integración con el sistema de validación, huella del documento, revisión humana registrada |
+| `san-receta-reserva` | La receta y su contenido se tratan como dato sensible reservado | CS Art. 101 | `sec-rest`, `data-privacy-by-design` | cifrado en reposo, acceso por permiso, registro de lecturas |
+| `san-destino-personal` | Cada entrega va al titular de la receta, dentro de su cantidad, sin traspaso a terceros | Ley 20.000 Arts. 4 y 50 | — | límites por persona y período; entrega solo al titular verificado; sin entrega a no socios |
+| `san-trazabilidad` | Cadena cultivo → lote → entrega con balance de masa y destrucción registrada | Ley 20.000 Art. 10 (desvío); DS 867 Art. 14 (destrucción) | `sec-logs` | libro de movimientos inmutable; balance de gramos; registro de mermas y destrucción |
+| `san-no-combustion` | El software no ofrece ni registra la combustión como forma de administración | Ley 20.000 Art. 8 inc. 2 | — | catálogo de vías de administración sin "fumada"; validación del campo |
+| `san-publicidad` | Las superficies públicas no promueven el uso ni publicitan productos | CS Art. 100 inc. 2; Ley 20.000 Art. 3 | — | revisión de textos públicos, catálogos y sitios por organización `[criterio jurídico]` |
+| `san-sag` | Autorización del SAG, avisos, guía de libre tránsito, cierre y destrucción (si aplica) | Ley 20.000 Art. 9; DS 867 Arts. 6-14 | — | registro de la resolución, fechas de aviso y guías; usuario |
+| `san-farmaceutico` | Productos registrados en el ISP solo con receta retenida y control de existencia (si aplica) | DS 404 Art. 23; DS 405 Art. 23 (Decreto 84/2015) | — | tipo de receta y control de existencias por producto |
+
 ## Cómo usarlo
 1. En Fase 1, junta evidencia para cada `id` que tengan los packs activos.
 2. En Fase 2, asigna estado + evidencia + remediación por control.

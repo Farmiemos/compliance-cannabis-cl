@@ -103,6 +103,50 @@ curl -L -A "$UA" "https://www.diariooficial.interior.gob.cl/publicaciones/2025/1
 sha256sum *.pdf *.xml
 ```
 
+## Pack sanitario-cannabis (descargado 2026-11-06, no se versiona)
+
+Misma política que los códigos: el texto de la BCN **no se redistribuye**. Se baja a `sources/.cache/`
+(ignorado por git) y se lee con `python scripts/bcn_article.py <archivo> <artículo>` o `--grep <regex>`.
+Estos XML **sí traen el texto íntegro** de cada artículo (comprobado con los incisos citados en el pack).
+Cada `idNorma` se verificó por el título, tipo, número y fecha del propio XML.
+
+| Archivo en caché | Norma | idNorma | Versión del texto | SHA-256 (trunc.) |
+|---|---|---|---|---|
+| `ley-20000.xml` | Ley 20.000, tráfico ilícito de estupefacientes | 235507 | 2026-05-23 | `e8a44296…` |
+| `ley-21575.xml` | Ley 21.575 (agrega el Art. 8 inc. 2 a la Ley 20.000) | 1192530 | 2023-05-23 | `c46cbd74…` |
+| `ds-867-reglamento-ley-20000.xml` | DS 867/2007 Interior, reglamento de la Ley 20.000 | 269323 | 2023-09-16 | `530d8a96…` |
+| `ds-404-estupefacientes.xml` | DS 404/1983 Salud, Reglamento de Estupefacientes | 13057 | 2020-11-19 (Art. 5) | `fc31df54…` |
+| `ds-405-psicotropicos.xml` | DS 405/1983 Salud, Reglamento de Psicotrópicos | 13066 | — | `fe711b19…` |
+| `decreto-84-2015.xml` | Decreto 84/2015 Salud (modifica DS 404 y 405: cannabis) | 1085003 | 2015-12-07 | `e904dafd…` |
+| `decreto-8-2017.xml` | Decreto 8/2017 Salud (modifica DS 404 y 405) | 1103188 | 2017 | `846d9e47…` |
+| `codigo-sanitario-dfl-725.xml` | Código Sanitario (DFL 725) | 5595 | 2025-09-29 | `08e91e88…` |
+| `ley-20724.xml` | Ley 20.724 (farmacias y medicamentos; habilitó la receta electrónica) | 1058373 | — | `dcebcba1…` |
+| `ley-21267.xml` | Ley 21.267 (adquisición de remedios en pandemia; Art. 101 CS) | 1149723 | — | `b5366591…` |
+| `res-1143-2023.xml` | Res. Ex. 1143/2023 Salud, Sistema de Validación de Recetas Gráficas | 1195587 | 2023-09-02 | `a7c743a4…` |
+| `decreto-11-2025.xml` | Decreto 11/2025 Salud (modifica el reglamento de farmacias, DS 466/1984) | 1213527 | — | `13b8d098…` |
+| `ds-41-2012-fichas-clinicas.xml` | DS 41/2012 Salud, **Reglamento sobre Fichas Clínicas** | 1046753 | 2012-12-15 | `947082e9…` |
+
+Leídos artículo por artículo para el pack: Ley 20.000 Arts. 1, 3, 4, 8, 9, 10, 11, 50; Ley 21.575 Art. 1
+N° 4; DS 867 Arts. 5-14; DS 404 Arts. 5 y 23; Decreto 84/2015 Arts. 1 y 2; Código Sanitario Arts. 100 y 101.
+Las otras normas de la tabla están identificadas pero **no** leídas artículo por artículo
+`[verificar contra fuente oficial]` antes de citarlas.
+
+**Pendiente:** el reglamento de receta electrónica estaba en consulta pública del MINSAL (2025) y el
+proyecto de ley Boletín 17355-11 en primer trámite (abril 2025). Revisar si se publicaron.
+
+```bash
+UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/124.0 Safari/537.36"
+mkdir -p sources/.cache && cd sources/.cache
+# La BCN limita las consultas ("Service limit has been reached"): una cada ~20 s.
+for pair in 235507:ley-20000 1192530:ley-21575 269323:ds-867-reglamento-ley-20000 13057:ds-404-estupefacientes \
+            13066:ds-405-psicotropicos 1085003:decreto-84-2015 1103188:decreto-8-2017 5595:codigo-sanitario-dfl-725 \
+            1058373:ley-20724 1149723:ley-21267 1195587:res-1143-2023 1213527:decreto-11-2025 \
+            1046753:ds-41-2012-fichas-clinicas; do
+  curl -sL -A "$UA" "https://www.leychile.cl/Consulta/obtxml?opt=7&idNorma=${pair%%:*}" -o "${pair#*:}.xml"; sleep 20
+done
+sha256sum *.xml   # la BCN publica versiones nuevas: un hash distinto significa que la norma cambió, releer
+```
+
 ## Regla de uso para la skill
 1. Antes de afirmar algo legal, búscalo en estos archivos (PDF completo > XML).
 2. Cita siempre **ley + artículo + archivo fuente**.

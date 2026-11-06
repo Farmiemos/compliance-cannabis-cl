@@ -2,9 +2,12 @@
 
 <img src="assets/hero.png" alt="compliance-cl" width="100%">
 
-# compliance-cl
+# compliance-cannabis-cl
 
-### Cumplimiento de datos para tu SaaS chileno, desde la terminal
+### Cumplimiento para trabajar con cannabis medicinal en Chile, desde la terminal
+
+> Derivada de [compliance-cl](https://github.com/Lelemon-studio/compliance-cl) de Lelemon (MIT). Suma el
+> pack `sanitario-cannabis` a los packs de datos personales y delitos económicos.
 
 Una skill de [Claude Code](https://claude.ai/code) que lee tu código, arma los documentos de
 cumplimiento y te deja listo para cumplir **sin abogado**. Cada conclusión apunta al artículo de la ley
@@ -52,16 +55,23 @@ Corres `/compliance-cl` sobre tu repo y:
 |------|-----|--------|-------|
 | `ley-21719` | Protección de Datos Personales | vigencia **1-dic-2026** | consentimiento, derechos ARCO, RAT, DPA, seguridad, brechas, transferencias |
 | `ley-21595` | Delitos Económicos (MPD) | **ya vigente** | modelo de prevención, código de ética, matriz de riesgos |
-| _próximos_ | GDPR · ISO 27001 · SOC 2 | extensible | agregar un marco es agregar un `pack` |
+| `sanitario-cannabis` | Ley 20.000, DS 867, DS 404/405, Decreto 84/2015, Código Sanitario | **ya vigente** | receta (Art. 8 inc. 2), entrega personal, trazabilidad, no combustión, publicidad, autorización SAG |
+| _próximos_ | Ley 20.584 · Ley 20.500 · Ley 21.663 · Código Tributario · Ley 19.628 (transitoria) | roadmap | paciente y ficha clínica, OSFL sin fines de lucro, ciberseguridad, retención, ley de datos vigente hasta dic-2026 |
+
+El pack sanitario **no dice si un modelo de cultivo o de entrega es legal**: deja por escrito las preguntas
+que exigen criterio jurídico (por ejemplo, la entrega a socios frente a la Ley 20.000 Art. 4 inc. 2 y el
+DS 404 Art. 5) y verifica lo que sí se puede comprobar en el código.
 
 ## Quickstart
 
 ```bash
 # 1. Instalar (la skill es este repo)
-git clone https://github.com/Lelemon-studio/compliance-cl ~/.claude/skills/compliance-cl
+git clone <url-de-este-repo> ~/.claude/skills/compliance-cannabis-cl
 
-# 2. En Claude Code, dentro del repo a auditar:
-/compliance-cl
+# 2. Bajar los textos oficiales que no se redistribuyen (receta en sources/FUENTES.md)
+
+# 3. En Claude Code, dentro del repo a auditar:
+/compliance-cannabis-cl
 ```
 
 ## Ejemplo de output
@@ -101,12 +111,16 @@ references/
   mapa-articulos-21719.md         # artículos chequeados contra el texto oficial
 packs/
   ley-21719/  ley-21595/          # obligaciones + plantillas por marco
+  sanitario-cannabis/             # Ley 20.000, DS 867, DS 404/405, Código Sanitario
+scripts/bcn_article.py            # lee un artículo del XML oficial de la BCN para verificar citas
 sources/                          # textos legales oficiales + FUENTES.md (reproducible)
 ```
 
 ## Roadmap
 
 - [ ] Completar el mapa de artículos (transferencias internacionales, MPD/DPO).
+- [x] Pack `sanitario-cannabis`.
+- [ ] Packs del cannabis medicinal: `ley-20584`, `ley-20500`, `ley-21663`, `tributario`, `ley-19628`.
 - [ ] Packs nuevos: GDPR, ISO 27001, SOC 2.
 - [ ] Mejor detección de cambios entre corridas.
 - [ ] Revisión legal opcional de las plantillas (un plus, no un requisito).
@@ -135,4 +149,4 @@ Ver [`NOTICE.md`](NOTICE.md).
 
 ## Licencia
 
-[MIT](LICENSE) © 2026 Lelemon SpA
+[MIT](LICENSE) © 2026 Lelemon SpA. Obra derivada: ver [`NOTICE.md`](NOTICE.md).

@@ -1,13 +1,15 @@
 ---
-name: compliance-cl
+name: compliance-cannabis-cl
 description: >-
   Esta skill se usa cuando el usuario pide "armar el compliance", "cumplir la Ley 21.719",
   "preparar la protección de datos", "auditar datos personales", "generar política de privacidad /
-  DPA / RAT / EIPD / consentimiento", "cumplir la ley de datos en Chile" o "modelo de prevención de
-  delitos (Ley 21.595)". Audita un repo y genera, SIN abogado, toda la documentación de cumplimiento
-  para un SaaS o empresa en Chile, contrastada contra el texto oficial de la ley. Cubre la Ley 21.719
-  (datos personales, vigencia dic-2026) y la 21.595 (delitos económicos, ya vigente), y es extensible
-  a más marcos (packs).
+  DPA / RAT / EIPD / consentimiento", "cumplir la ley de datos en Chile", "modelo de prevención de
+  delitos (Ley 21.595)", o "compliance de cannabis medicinal", "Ley 20.000", "receta de cannabis",
+  "trazabilidad de cannabis", "autorización SAG", "DS 404 / Decreto 84". Audita un repo y genera, SIN
+  abogado, la documentación de cumplimiento para un SaaS, empresa u organización que trabaja con cannabis
+  medicinal en Chile, contrastada contra el texto oficial de la ley. Cubre la Ley 21.719, la 21.595 y el
+  pack sanitario-cannabis (Ley 20.000, DS 867, DS 404/405, Decreto 84/2015, Código Sanitario). Derivada
+  de compliance-cl de Lelemon (MIT).
 license: MIT
 allowed-tools:
   - Read
@@ -34,7 +36,7 @@ en el repo que se re-corre en el tiempo. Objetivo: que un founder cumpla **solo*
 - **Controles** = unidades reutilizables que satisfacen varios marcos a la vez. Catálogo + crosswalk:
   `references/controls.md`.
 - **Packs** = una ley cada uno (`packs/<id>/pack.md`): obligaciones, controles que exige y documentos a
-  generar. Hoy: `ley-21719`, `ley-21595`.
+  generar. Hoy: `ley-21719`, `ley-21595`, `sanitario-cannabis`.
 - **Estado** = el output vive en `<repo>/.compliance/` versionado por git. Formato: `references/output-model.md`.
 - **Fuentes (verdad)** = textos OFICIALES en `sources/` (`FUENTES.md`). Toda afirmación legal cita
   **ley + artículo + archivo**; lo no verificable se marca `[verificar contra fuente oficial]`. NADA
@@ -47,12 +49,16 @@ Mostrar el disclaimer. Luego preguntar al usuario (con `AskUserQuestion` cuando 
 respuestas para rellenar los documentos**. No dejar placeholders salvo que el dato sea genuinamente
 desconocido; en ese caso, proponer un **default sensato** y marcarlo.
 Recoger:
-1. Repo a auditar y **packs** a activar (default: `ley-21595` + `ley-21719`).
+1. Repo a auditar y **packs** a activar (default: `ley-21595` + `ley-21719`; agregar `sanitario-cannabis`
+   si la organización cultiva, custodia, entrega o registra cannabis, o si el software lo hace por ella).
 2. **Empresa:** razón social, RUT, domicilio, correo de contacto, tamaño, representante legal.
 3. **Responsable de datos / encargado de prevención** designado (en micro suele ser el dueño).
 4. Por flujo de datos: rol **responsable** vs **encargado**.
 5. **Plazos de retención** por tipo de dato; si no los sabe, proponer defaults razonables.
 6. ¿Tratan **datos sensibles** (salud, etc.)? ¿Usuarios en la **UE** (gatilla GDPR a futuro)?
+7. Con `sanitario-cannabis`: forma jurídica; ¿cultiva y con qué apoyo (Art. 8 inc. 2 o autorización del
+   SAG)?; ¿entrega a terceros con receta?; ¿maneja productos registrados en el ISP?; ¿tiene superficies
+   públicas (sitio, catálogo, redes)?
 Si ya existe `<repo>/.compliance/state.json`, leerlo: esta corrida es una re-evaluación.
 
 ### Fase 1 — Descubrimiento (leer el código, no asumir)
@@ -61,6 +67,10 @@ Recorrer el repo con Grep/Glob para levantar evidencia de cada control:
 - Proveedores externos y transferencias internacionales (`.env*`, `package.json`, configs): AWS, Google, Meta, etc.; marcar los que procesan fuera de Chile.
 - Medidas técnicas: TLS, cifrado en reposo, hashing de password, MFA, logs/auditoría, segregación por tenant, secretos fuera del código, seudonimización, privacy-by-default.
 - Gobernanza (no está en el código): tomarla del cuestionario; marcar `❓` lo no verificable por código.
+- Con `sanitario-cannabis`: esquema y validación de la receta (emisor, diagnóstico, tratamiento, duración,
+  vía de administración); bloqueo de entregas con receta vencida; límites por persona; libro de movimientos
+  de lotes y balance de gramos; catálogo de vías de administración (buscar `fumad|combust|smok`); textos de
+  las superficies públicas (precios, promociones, invitaciones al consumo).
 
 ### Fase 2 — Evaluar controles y RESOLVER decisiones
 Para cada control de `references/controls.md`: estado (✅/⚠️/❌/❓) + evidencia + remediación. Un control
@@ -70,13 +80,18 @@ se propaga a todos los marcos que lo exigen.
   basta el responsable designado → dar el resultado.
 - **EIPD** (Art. 15 ter): aplicar el test de `packs/ley-21719/templates/eipd.md`; si aplica un supuesto, es obligatoria.
 - **Base de licitud** por flujo y **mecanismo de transferencia** (cláusulas modelo).
+- **Excepción, `sanitario-cannabis`:** las cuatro preguntas de `packs/sanitario-cannabis/pack.md` ("Preguntas
+  que el pack NO resuelve") **nunca se resuelven**: se registran como abiertas en
+  `san-fundamento-modelo-operativo.md`. Afirmar que un modelo de cultivo o entrega es legal o ilegal está
+  fuera del alcance de la skill.
 
 ### Fase 3 — Generar TODA la documentación (rellenada)
 Por cada pack activo, leer su `pack.md` y generar **todos** sus `templates/`, **rellenados con las
 respuestas de Fase 0 y los hallazgos de Fase 1**. Para `ley-21719`: rat, política, consentimiento,
 canal-derechos, dpa, anexo-transferencias, plan-respuesta-brechas, registro-vulneraciones, y eipd (si el
 test la hace obligatoria). Para `ley-21595`: modelo-prevencion-delitos, código-etica, matriz-riesgos,
-acta-encargado-prevencion, reglamento-canal-denuncias. Reemplazar todos los placeholders; usar
+acta-encargado-prevencion, reglamento-canal-denuncias. Para `sanitario-cannabis`: fundamento-modelo-operativo,
+politica-receta, registro-trazabilidad, y bitacora-sag (solo con cultivo autorizado). Reemplazar todos los placeholders; usar
 `[COMPLETAR: ...]` solo para lo realmente desconocido.
 
 ### Fase 4 — Escribir el estado versionado
