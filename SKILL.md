@@ -103,6 +103,9 @@ se propaga a todos los marcos que lo exigen.
 - **¿El registro es una ficha clínica?** (`ley-20584`): **sí se resuelve**, con el test de
   `packs/ley-20584/pack.md` (Ley 20.584 Arts. 3 y 12). Si no lo es, no se le llama así en ningún texto.
 - **¿Quién está obligado por la Ley 21.663?** **Sí se resuelve**, con la tabla de `packs/ley-21663/pack.md`.
+- **DJ 1945 (`tributario`):** si los ingresos del año superan 4.000 UF, es obligatoria. Informa las cuotas de
+  asociados; no las justifica ni las exime. Lo que las sostiene es el DL 824 Art. 17 N° 11 y los hechos que pide el
+  SII (Oficio 2419/2013: regla de estatutos, uniforme para todos).
 - **Licitud de los fines (`ley-20500`) e IVA del aporte (`tributario`): nunca se resuelven.** El fundamento
   constitucional (Art. 19 N° 1, 9 y 15) se documenta como argumento con evidencia por eslabón, no como regla.
 

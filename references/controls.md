@@ -99,8 +99,9 @@ Citas textuales en `packs/tributario/pack.md`.
 | id | Control | Norma | Reutiliza | Cómo se verifica en el código |
 |----|---------|-------|-----------|-------------------------------|
 | `trib-conservacion` | Registros de aportes, compras y gastos conservados al menos seis años, aunque el titular pida suprimirlos | Código Tributario Arts. 17 y 200 | `data-minimizacion` | la retención y la supresión no borran respaldos tributarios antes del plazo |
-| `trib-aporte-trazable` | Cada aporte queda ligado a su acuerdo de asamblea y separado de la entrega de cannabis | DL 825 Art. 2 N° 1; CC Art. 556 | `osfl-sin-lucro` | el monto no se calcula por gramo entregado `[criterio jurídico]` |
-| `trib-documento` | Cada ingreso tiene el documento tributario que corresponda | DL 825 Art. 2; DL 824 Art. 40 N° 4 | — | registro del documento emitido por ingreso; usuario `[criterio jurídico]` |
+| `trib-aporte-trazable` | Cada cuota queda ligada a la regla de los estatutos que la fija, igual para todos los socios (fija, o variable con la misma fórmula para todos) | DL 824 Art. 17 N° 11; Oficio SII 2419/2013; CC Art. 556 | `osfl-sin-lucro` | cada cuota registrada cita la regla de estatutos y su cálculo; ninguna cuota fuera de esa regla `[criterio jurídico]` |
+| `trib-documento` | Cada ingreso tiene su respaldo: comprobante de ingreso si es cuota de asociado; documento tributario si el SII lo califica como venta | Oficio SII 3616/2002; DL 825 Art. 2 | — | registro del documento emitido por ingreso; calificación del ingreso `[criterio jurídico]` |
+| `trib-dj1945` | Si los ingresos del año superan 4.000 UF, la DJ 1945 se presenta con ingresos y desembolsos, y los RUT que cubren el 80% de los ingresos en dinero | Res. Ex. SII 103/2017 y 94/2023 | `trib-conservacion` | el software exporta por año: ingresos por tipo (cuota de asociados, donaciones) y por RUT, y desembolsos |
 
 ## Controles del pack `ley-21663`
 

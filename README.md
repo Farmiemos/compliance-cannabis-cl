@@ -101,7 +101,8 @@ El contenido legal se contrasta contra el texto oficial que viene en [`sources/`
 Diario Oficial y los XML de Ley Chile, con [`FUENTES.md`](sources/FUENTES.md) (URL, `idNorma`, SHA-256 y
 el comando para volver a bajarlos). En [`mapa-articulos-21719.md`](references/mapa-articulos-21719.md)
 cada artículo está chequeado contra el texto, con la línea donde aparece. Lo que no se puede confirmar
-ahí queda marcado como `[verificar contra fuente oficial]`.
+ahí queda marcado como `[verificar contra fuente oficial]`. `python -I scripts/verify_quotes.py` comprueba que
+cada cita de los packs aparezca textual en los textos oficiales descargados (BCN y SII).
 
 ## Estructura
 
@@ -120,6 +121,7 @@ packs/
   ley-20500/  tributario/         # la OSFL como asociación; SII
   ley-21663/  ley-19628/          # ciberseguridad; ley de datos vigente hasta dic-2026
 scripts/bcn_article.py            # lee un artículo del XML oficial de la BCN para verificar citas
+scripts/verify_quotes.py          # verifica todas las citas de los packs contra BCN y SII (ver FUENTES.md)
 sources/                          # textos legales oficiales + FUENTES.md (reproducible)
 ```
 

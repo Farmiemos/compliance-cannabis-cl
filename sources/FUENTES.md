@@ -179,7 +179,7 @@ Misma política y receta. La Ley 19.628 ya está versionada arriba (`ley-19628-c
 Leídos artículo por artículo: Constitución Art. 19 N° 1, 9, 15 y 21; Ley 20.500 Arts. 1-11, 15 y 16; Código Civil
 Arts. 545, 548 a 548-4, 549, 550, 551 a 551-2, 556, 557 a 557-3, 558 y 559; Código Tributario Arts. 17 y 200; DL 825
 Art. 2; DL 824 Art. 40; Ley 21.663 Arts. 1, 4-9; Ley 19.628 Arts. 2, 4, 7, 10, 11, 12 y 16. **No leídos:** artículos
-transitorios de la Ley 21.663 (vigencia escalonada) y circulares u oficios del SII.
+transitorios de la Ley 21.663 (vigencia escalonada). Los documentos del SII están en la sección siguiente.
 
 **Ojo con `constitucion.xml`:** el texto viene intercalado con anotaciones de margen ("CPR Art. 19° N° 9",
 "D.O. 24.10.1980") en medio de las frases. Para verificar una cita, quitar esas anotaciones antes de comparar.
@@ -189,6 +189,46 @@ for pair in 242302:constitucion 1023143:ley-20500 172986:codigo-civil 6374:codig
   curl -sL -A "$UA" "https://www.leychile.cl/Consulta/obtxml?opt=7&idNorma=${pair%%:*}" -o "sources/.cache/${pair#*:}.xml"; sleep 20
 done
 ```
+
+## Documentos del SII (descargados 2026-11-06, no se versionan)
+
+Fuente: sii.cl. Se guardan en `sources/.cache/sii/`, con el texto extraído en un `.txt` del mismo nombre (el que lee
+`scripts/verify_quotes.py`).
+
+| Archivo en caché | Documento | URL | SHA-256 (trunc.) |
+|---|---|---|---|
+| `reso94-2023.pdf` | Res. Ex. SII 94/2023, modifica la Res. 103/2017 (DJ 1945; umbral 4.000 UF) | https://www.sii.cl/normativa_legislacion/resoluciones/2023/reso94.pdf | `d855f56a…` |
+| `dj1945-instrucciones-2023.pdf` | Anexo 2 de la Res. 94/2023: formulario e instrucciones de la DJ 1945 | https://www.sii.cl/normativa_legislacion/resoluciones/2023/reso94_anexo2.pdf | `76e7c457…` |
+| `oficio-2419-2013.htm` | Oficio 2419/2013: cuotas de asociados fijas o variables; Renta e IVA | https://www.sii.cl/pagina/jurisprudencia/adminis/2013/renta/ja2419.htm | `1dfe7603…` |
+| `oficio-3616-2002.htm` | Oficio 3616/2002: cuotas sociales sin IVA; comprobante de ingreso | https://www.sii.cl/pagina/jurisprudencia/adminis/2002/ventas/ja372.htm | `d1241ed4…` |
+| `ordinario-678-2009.pdf` | Ord. 678/2009 (DR Santiago Oriente): aportes de socios e IVA | https://www.sii.cl/documentos/normativa_ddrr/2009/oriente/ordinario678.pdf | `0d1f6016…` |
+
+Los oficios responden consultas concretas y no obligan frente a hechos distintos. No leído: el DS 110/1979 (reglamento
+de personas jurídicas) que cita el Oficio 2419 `[verificar vigencia]`.
+
+```bash
+mkdir -p sources/.cache/sii && cd sources/.cache/sii
+curl -sL -A "$UA" -o reso94-2023.pdf https://www.sii.cl/normativa_legislacion/resoluciones/2023/reso94.pdf
+curl -sL -A "$UA" -o dj1945-instrucciones-2023.pdf https://www.sii.cl/normativa_legislacion/resoluciones/2023/reso94_anexo2.pdf
+curl -sL -A "$UA" -o oficio-2419-2013.htm https://www.sii.cl/pagina/jurisprudencia/adminis/2013/renta/ja2419.htm
+curl -sL -A "$UA" -o oficio-3616-2002.htm https://www.sii.cl/pagina/jurisprudencia/adminis/2002/ventas/ja372.htm
+curl -sL -A "$UA" -o ordinario-678-2009.pdf https://www.sii.cl/documentos/normativa_ddrr/2009/oriente/ordinario678.pdf
+# texto: PDF con pypdf; HTML del SII viene en cp1252
+python -I -c "import pathlib,re,html,pypdf
+for f in pathlib.Path('.').iterdir():
+    if f.suffix=='.pdf': t='
+'.join(p.extract_text() for p in pypdf.PdfReader(f).pages)
+    elif f.suffix=='.htm': t=html.unescape(re.sub(r'<[^>]+>',' ',f.read_bytes().decode('cp1252')))
+    else: continue
+    f.with_suffix('.txt').write_text(t,encoding='utf-8')"
+```
+
+## Verificar todas las citas
+
+`python -I scripts/verify_quotes.py` busca cada cita de 20 o más caracteres de `packs/**/*.md` en los textos de
+`sources/` y `sources/.cache/` (BCN y SII) y termina con código 1 si alguna no aparece. Los textos entre comillas que
+no son citas legales (nombres de sección, etiquetas sugeridas) van en `scripts/quote-allowlist.txt`. Correrlo después
+de editar un pack y cada vez que se re-descarguen las fuentes.
 
 ## Regla de uso para la skill
 1. Antes de afirmar algo legal, búscalo en estos archivos (PDF completo > XML).

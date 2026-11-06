@@ -37,7 +37,7 @@ en la pregunta 1 de la sección 4.
 | Receta | [cómo se recibe y valida] | Ley 20.000 Art. 8 inc. 2; Código Sanitario Art. 101 | |
 | Custodia | [dónde y cómo se guarda] | Ley 20.000 Art. 4 inc. 1 (tratamiento médico) | |
 | Entrega a la persona | [cómo y a quién] | Ley 20.000 Art. 4 y Art. 50 inc. final | |
-| Contribución económica | [aporte, cuota social] | — (ver pregunta 1) | |
+| Contribución económica | [cuota de asociado: fija o variable, regla de estatutos] | DL 824 Art. 17 N° 11; Oficio SII 2419/2013 (cuotas variables aceptadas en otro caso); DJ 1945 la informa, no la justifica — ver `packs/tributario/` sección 5 y 6 | |
 | Información pública | [sitio, catálogo, redes] | Código Sanitario Art. 100 inc. 2; Ley 20.000 Art. 3 | |
 
 ## 4. Preguntas abiertas `[criterio jurídico]`
