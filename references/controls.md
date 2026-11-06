@@ -60,6 +60,23 @@ mismo control también cuenta para datos personales (se evalúa una vez).
 | `san-sag` | Autorización del SAG, avisos, guía de libre tránsito, cierre y destrucción (si aplica) | Ley 20.000 Art. 9; DS 867 Arts. 6-14 | — | registro de la resolución, fechas de aviso y guías; usuario |
 | `san-farmaceutico` | Productos registrados en el ISP solo con receta retenida y control de existencia (si aplica) | DS 404 Art. 23; DS 405 Art. 23 (Decreto 84/2015) | — | tipo de receta y control de existencias por producto |
 
+## Controles del pack `ley-20584`
+
+Citas textuales en `packs/ley-20584/pack.md`. `pac-ficha-clasificacion` aplica siempre; el resto, solo si el
+test del pack da Resultado A (el registro es una ficha clínica).
+
+| id | Control | Norma | Reutiliza | Cómo se verifica en el código |
+|----|---------|-------|-----------|-------------------------------|
+| `pac-ficha-clasificacion` | El registro está clasificado (ficha clínica o no) y su nombre visible coincide con esa clasificación | Ley 20.584 Arts. 3 y 12; DS 41 Arts. 2 y 4 | — | buscar `ficha clínica\|historia clínica\|clinical.record` en textos visibles, PDFs y campos; contrastar con el resultado del test |
+| `pac-ficha-contenido` | La ficha tiene el contenido mínimo y cada registro identifica y firma al profesional | DS 41 Arts. 6 y 7 | — | campos (a)-(d) en el esquema; autor y firma por entrada |
+| `pac-ficha-integridad` | Los cambios no borran la versión anterior; respaldo y restauración probados | Ley 20.584 Art. 12 inc. 2; DS 41 Art. 8 | `sec-backups`, `sec-logs` | historial de versiones o registro inmutable; doble copia; prueba de restore |
+| `pac-ficha-acceso` | Solo accede quien participa en la atención; cada acceso queda registrado | Ley 20.584 Art. 13 inc. 4; DS 41 Art. 9 | `sec-logs`, `sec-rest` | permiso por vínculo de atención, no solo por rol; log de lecturas con fecha y persona |
+| `pac-ficha-entrega` | El titular obtiene copia íntegra, gratuita, en formato estructurado y portable | Ley 20.584 Art. 13 inc. final | `data-derechos` | exportación estructurada (JSON/FHIR o similar) disponible al titular |
+| `pac-ficha-conservacion` | Conservación de al menos 15 años desde el último ingreso | Ley 20.584 Art. 13 inc. 1; DS 41 Art. 11 | `data-minimizacion` | la retención automática no borra fichas antes del plazo |
+| `pac-ficha-eliminacion` | Eliminación con destrucción efectiva y acta protocolizada (privados) | DS 41 Art. 12 | — | procedimiento y registro del acta; usuario |
+| `pac-consentimiento` | Consentimiento informado escrito en la ficha cuando el riesgo lo exige; en salud digital, con firma conforme a la Ley 19.799 | Ley 20.584 Art. 14 | — | registro de aceptación o rechazo con fecha, contenido informado y firma |
+| `pac-reclamos` | Sistema de registro y respuesta escrita de reclamos (prestador institucional) | Ley 20.584 Art. 37 | `gov-denuncias` | canal, registro y respuesta; usuario |
+
 ## Cómo usarlo
 1. En Fase 1, junta evidencia para cada `id` que tengan los packs activos.
 2. En Fase 2, asigna estado + evidencia + remediación por control.

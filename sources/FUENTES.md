@@ -147,6 +147,21 @@ done
 sha256sum *.xml   # la BCN publica versiones nuevas: un hash distinto significa que la norma cambió, releer
 ```
 
+## Pack ley-20584 (descargado 2026-11-06, no se versiona)
+
+Misma política y misma receta que el pack anterior. El DS 41/2012 ya está en la tabla de arriba.
+
+| Archivo en caché | Norma | idNorma | Versión del texto | SHA-256 (trunc.) |
+|---|---|---|---|---|
+| `ley-20584.xml` | Ley 20.584, derechos y deberes de las personas en su atención de salud | 1039348 | 2026-02-16 | `4a673a22…` |
+
+Leídos artículo por artículo para el pack: Ley 20.584 Arts. 1-6, 10, 12, 13, 14, 37 y 38; DS 41/2012
+Arts. 1-12. Los montos de sanción del DFL 1/2006 Salud (al que remite el Art. 38) **no** se leyeron.
+
+```bash
+curl -sL -A "$UA" "https://www.leychile.cl/Consulta/obtxml?opt=7&idNorma=1039348" -o sources/.cache/ley-20584.xml
+```
+
 ## Regla de uso para la skill
 1. Antes de afirmar algo legal, búscalo en estos archivos (PDF completo > XML).
 2. Cita siempre **ley + artículo + archivo fuente**.

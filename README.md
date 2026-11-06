@@ -56,7 +56,8 @@ Corres `/compliance-cl` sobre tu repo y:
 | `ley-21719` | Protección de Datos Personales | vigencia **1-dic-2026** | consentimiento, derechos ARCO, RAT, DPA, seguridad, brechas, transferencias |
 | `ley-21595` | Delitos Económicos (MPD) | **ya vigente** | modelo de prevención, código de ética, matriz de riesgos |
 | `sanitario-cannabis` | Ley 20.000, DS 867, DS 404/405, Decreto 84/2015, Código Sanitario | **ya vigente** | receta (Art. 8 inc. 2), entrega personal, trazabilidad, no combustión, publicidad, autorización SAG |
-| _próximos_ | Ley 20.584 · Ley 20.500 · Ley 21.663 · Código Tributario · Ley 19.628 (transitoria) | roadmap | paciente y ficha clínica, OSFL sin fines de lucro, ciberseguridad, retención, ley de datos vigente hasta dic-2026 |
+| `ley-20584` | Derechos del paciente + DS 41/2012 | **ya vigente** | si tu registro es ficha clínica, contenido mínimo, acceso, 15 años, portabilidad, consentimiento informado |
+| _próximos_ | Ley 20.500 · Ley 21.663 · Código Tributario · Ley 19.628 (transitoria) | roadmap | OSFL sin fines de lucro, ciberseguridad, retención, ley de datos vigente hasta dic-2026 |
 
 El pack sanitario **no dice si un modelo de cultivo o de entrega es legal**: deja por escrito las preguntas
 que exigen criterio jurídico (por ejemplo, la entrega a socios frente a la Ley 20.000 Art. 4 inc. 2 y el
@@ -112,6 +113,7 @@ references/
 packs/
   ley-21719/  ley-21595/          # obligaciones + plantillas por marco
   sanitario-cannabis/             # Ley 20.000, DS 867, DS 404/405, Código Sanitario
+  ley-20584/                      # derechos del paciente y ficha clínica (DS 41/2012)
 scripts/bcn_article.py            # lee un artículo del XML oficial de la BCN para verificar citas
 sources/                          # textos legales oficiales + FUENTES.md (reproducible)
 ```
@@ -120,7 +122,8 @@ sources/                          # textos legales oficiales + FUENTES.md (repro
 
 - [ ] Completar el mapa de artículos (transferencias internacionales, MPD/DPO).
 - [x] Pack `sanitario-cannabis`.
-- [ ] Packs del cannabis medicinal: `ley-20584`, `ley-20500`, `ley-21663`, `tributario`, `ley-19628`.
+- [x] Pack `ley-20584`.
+- [ ] Packs del cannabis medicinal: `ley-20500`, `ley-21663`, `tributario`, `ley-19628`.
 - [ ] Packs nuevos: GDPR, ISO 27001, SOC 2.
 - [ ] Mejor detección de cambios entre corridas.
 - [ ] Revisión legal opcional de las plantillas (un plus, no un requisito).
