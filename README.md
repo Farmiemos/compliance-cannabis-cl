@@ -1,22 +1,23 @@
 <div align="center">
 
-<img src="assets/hero.png" alt="compliance-cl" width="100%">
+<img src="assets/hero.png" alt="compliance-cannabis-cl" width="100%">
 
 # compliance-cannabis-cl
 
 ### Cumplimiento para trabajar con cannabis medicinal en Chile, desde la terminal
 
-> Derivada de [compliance-cl](https://github.com/Lelemon-studio/compliance-cl) de Lelemon (MIT). Suma el
-> pack `sanitario-cannabis` a los packs de datos personales y delitos económicos.
+> Derivada de [compliance-cl](https://github.com/Lelemon-studio/compliance-cl) de Lelemon (MIT). A los packs de
+> datos personales y delitos económicos les suma lo que pide el ecosistema del cannabis medicinal: la ley sanitaria,
+> los derechos del paciente, la OSFL como asociación, el SII y la ciberseguridad.
 
-Una skill de [Claude Code](https://claude.ai/code) que lee tu código, arma los documentos de
-cumplimiento y te deja listo para cumplir **sin abogado**. Cada conclusión apunta al artículo de la ley
-que la respalda; el abogado queda como un plus opcional, no como requisito para partir.
+Una skill de [Claude Code](https://claude.ai/code) que lee tu código, arma los documentos de cumplimiento y te
+dice, artículo por artículo, qué cumples, qué falta y qué preguntas necesitan criterio jurídico. Cada cita está
+comprobada contra el texto oficial (BCN y SII) con un script que puedes volver a correr.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 ![Status](https://img.shields.io/badge/status-alpha-orange)
 ![Claude Code](https://img.shields.io/badge/Claude%20Code-skill-8A2BE2)
-![Chile](https://img.shields.io/badge/%F0%9F%87%A8%F0%9F%87%B1-Ley%2021.719%20%2B%2021.595-1f6feb)
+![Chile](https://img.shields.io/badge/%F0%9F%87%A8%F0%9F%87%B1-8%20packs%20%C2%B7%2065%20controles-1f6feb)
 
 </div>
 
@@ -24,47 +25,99 @@ que la respalda; el abogado queda como un plus opcional, no como requisito para 
 
 ## Por qué
 
-La Ley 21.719 de datos entra en vigencia el 1 de diciembre de 2026, con multas de 5.000 a 20.000 UTM
-según la gravedad. La Ley 21.595 de delitos económicos ya rige, incluso para una SpA de una persona.
-Casi nadie llega preparado.
+En Chile un paciente puede tener una **receta médica** de cannabis, pero ni el Estado ni el mercado privado le
+aseguran el tratamiento. Para cumplir esa receta, los pacientes se organizan en **asociaciones sin fines de lucro**
+(Ley 20.500) y cultivan en forma colectiva. Ese modelo toca muchas leyes a la vez:
 
-compliance-cl hace el trabajo completo en una corrida: el inventario, los documentos y el diagnóstico
-técnico. La idea es que un founder arme su cumplimiento solo, sin equipo legal ni un estudio cobrándole
-varios palos por el trabajo mecánico.
+- la **Ley 20.000** y sus reglamentos (receta, cultivo, entrega, publicidad);
+- la **Ley 20.584** (cuándo un registro es ficha clínica y qué obliga);
+- el **Código Civil** y la **Ley 20.500** (estatutos, socios, actas, sin lucro);
+- el **SII** (cuotas de asociados, IVA, DJ 1945, conservación de respaldos);
+- las leyes de **datos personales** (19.628 hoy, 21.719 desde el 1-dic-2026) con datos de salud, que son sensibles;
+- la **Ley 21.663** de ciberseguridad, que puede alcanzar al proveedor del software;
+- la **Ley 21.595** de delitos económicos.
+
+Ningún documento junta todo eso con las citas exactas. Esta skill lo hace sobre tu repo y deja el resultado
+versionado.
+
+## Para quién
+
+| Quién | Qué saca de la skill |
+|---|---|
+| **OSFL de pacientes** (asociación o corporación) | gobierno asociativo, registro de socios, política de receta, trazabilidad, cuotas frente al SII, datos de salud |
+| **Proveedor del software** (SaaS para asociaciones o dispensarios) | qué datos trata y en qué rol, si es servicio esencial de la Ley 21.663, reporte de incidentes, DPA con cada organización |
+| **Cultivo autorizado por el SAG** | bitácora de cultivo, cosecha y destrucción (DS 867) |
+| **Prestador de salud** (médico, centro) | cuándo su registro es ficha clínica, contenido mínimo del DS 41, 15 años de conservación |
 
 ## Qué hace
 
-Corres `/compliance-cl` sobre tu repo y:
+Corres `/compliance-cannabis-cl` sobre tu repo y:
 
-1. Te pregunta lo básico: empresa, si eres responsable o encargado de los datos, y qué leyes auditar.
-2. Lee el código y mapea qué datos personales guardas y a qué proveedores se van (las transferencias
-   fuera de Chile).
-3. Evalúa los controles con un catálogo que puntúa varias leyes a la vez.
-4. Arma los documentos: RAT, política de privacidad, DPA, plan de brechas, modelo de prevención de
-   delitos, código de ética y matriz de riesgos.
-5. Guarda el estado en `.compliance/` y lo versiona, así ves qué mejora o qué se rompe entre corridas.
-6. Te explica cada decisión con su artículo y trae guías para cuando pase algo: un derecho ARCO, una
-   brecha, una fiscalización.
-7. **Construye las remediaciones**: como corre en Claude Code, puede implementar los arreglos (MFA,
-   cifrado en reposo, audit log, endpoints ARCO, retención) y **montar el monitoreo** (secret scanning,
-   HIBP, alertas), siguiendo recetas con librerías verificadas. Ver `references/build/`.
+1. **Pregunta lo básico:** organización, rol en cada flujo de datos, si es OSFL, si cultiva con autorización del
+   SAG y si su registro lo escribe un profesional de salud.
+2. **Lee el código:** datos personales y de salud, recetas, entregas, cuotas, proveedores y transferencias fuera
+   de Chile.
+3. **Evalúa 65 controles** con un catálogo que puntúa varias leyes a la vez (un control se evalúa una vez y cuenta
+   para todas las que lo exigen).
+4. **Resuelve lo que la ley permite resolver** y lo dice con el artículo: si tu registro es ficha clínica (Ley
+   20.584 Arts. 3 y 12), quién está obligado por la Ley 21.663 (Art. 4), si la DJ 1945 te aplica (4.000 UF), si
+   necesitas DPO o EIPD.
+5. **Deja por escrito lo que no se puede resolver sin criterio jurídico**, con las citas a favor y en contra
+   (ver abajo).
+6. **Arma los documentos** rellenados con tus respuestas y lo encontrado en el código.
+7. **Guarda el estado** en `.compliance/` para ver qué mejora o qué se rompe entre corridas.
+8. **Construye las remediaciones** en el código si se lo pides (MFA, cifrado, audit log, derechos ARCO,
+   retención, monitoreo), con las recetas de `references/build/`.
 
 ## Marcos cubiertos
 
-| Pack | Ley | Estado | Cubre |
-|------|-----|--------|-------|
-| `ley-21719` | Protección de Datos Personales | vigencia **1-dic-2026** | consentimiento, derechos ARCO, RAT, DPA, seguridad, brechas, transferencias |
-| `ley-21595` | Delitos Económicos (MPD) | **ya vigente** | modelo de prevención, código de ética, matriz de riesgos |
-| `sanitario-cannabis` | Ley 20.000, DS 867, DS 404/405, Decreto 84/2015, Código Sanitario | **ya vigente** | receta (Art. 8 inc. 2), entrega personal, trazabilidad, no combustión, publicidad, autorización SAG |
-| `ley-20584` | Derechos del paciente + DS 41/2012 | **ya vigente** | si tu registro es ficha clínica, contenido mínimo, acceso, 15 años, portabilidad, consentimiento informado |
-| `ley-20500` | Ley 20.500 + Código Civil Título XXXIII + Constitución Art. 19 N° 1, 9 y 15 | **ya vigente** | la OSFL como asociación: fundamento del cultivo colectivo, estatutos, socios, actas, sin lucro |
-| `tributario` | Código Tributario, DL 825 (IVA), DL 824 (Renta) | **ya vigente** | conservación seis años, aporte frente a venta, exención de renta |
-| `ley-21663` | Ley Marco de Ciberseguridad | escalonada | quién está obligado (el proveedor SaaS puede serlo), reporte al CSIRT en 3 h / 72 h / 15 días |
-| `ley-19628` | Protección de la vida privada | **vigente hasta 1-dic-2026** | datos de salud solo con consentimiento escrito, respuesta en dos días hábiles |
+| Pack | Normas | Estado | Cubre | Controles |
+|------|--------|--------|-------|-----------|
+| `sanitario-cannabis` | Ley 20.000, DS 867, DS 404/405, Decreto 84/2015, Código Sanitario | **ya vigente** | receta (Art. 8 inc. 2), entrega personal, trazabilidad, no combustión, publicidad, autorización SAG | `san-*` (10) |
+| `ley-20584` | Derechos del paciente + DS 41/2012 | **ya vigente** | test de ficha clínica, contenido mínimo, acceso, 15 años, portabilidad, consentimiento informado | `pac-*` (9) |
+| `ley-20500` | Ley 20.500, Código Civil Título XXXIII, Constitución Art. 19 N° 1, 9 y 15 | **ya vigente** | la OSFL como asociación: fundamento del cultivo colectivo, estatutos, socios, actas, sin lucro | `osfl-*` (8) |
+| `tributario` | Código Tributario, DL 825 (IVA), DL 824 (Renta), Res. SII 103/2017 y 94/2023, Oficios SII | **ya vigente** | cuotas de asociados, IVA, comprobante de ingreso, DJ 1945, conservación seis años | `trib-*` (4) |
+| `ley-19628` | Protección de la vida privada | **vigente hasta 1-dic-2026** | datos de salud solo con consentimiento escrito, respuesta en dos días hábiles | `t19628-*` (2) |
+| `ley-21719` | Protección de Datos Personales | vigencia **1-dic-2026** | consentimiento, derechos ARCO, RAT, DPA, seguridad, brechas, transferencias | `data-*`, `sec-*`, `inc-*` |
+| `ley-21663` | Ley Marco de Ciberseguridad | escalonada | quién está obligado (el SaaS puede serlo), reporte al CSIRT en 3 h / 72 h / 15 días | `ciber-*` (3) |
+| `ley-21595` | Delitos Económicos (MPD) | **ya vigente** | modelo de prevención, código de ética, matriz de riesgos | `gov-*` |
 
-El pack sanitario **no dice si un modelo de cultivo o de entrega es legal**: deja por escrito las preguntas
-que exigen criterio jurídico (por ejemplo, la entrega a socios frente a la Ley 20.000 Art. 4 inc. 2 y el
-DS 404 Art. 5) y verifica lo que sí se puede comprobar en el código.
+## Qué resuelve y qué no
+
+**Lo resuelve, con el artículo:**
+
+- **¿Mi registro es ficha clínica?** Solo si lo lleva un prestador por la atención que él dio (Ley 20.584 Arts. 3 y
+  12). Si no lo es, la skill pide no llamarlo así en ningún texto, porque el nombre anuncia obligaciones que la
+  organización no asume.
+- **¿Me obliga la Ley 21.663?** La OSFL, en principio no. El proveedor del software puede caer en "servicios
+  digitales y servicios de tecnología de la información gestionados por terceros" (Art. 4): depende de la
+  resolución de la Agencia.
+- **¿Tengo que presentar la DJ 1945?** Si los ingresos del año superan 4.000 UF (Res. SII 94/2023).
+- **¿Cuánto guardo los respaldos de cuotas y gastos?** Al menos seis años (Código Tributario Arts. 17 y 200),
+  aunque el socio pida borrar sus datos.
+
+**No lo resuelve; lo deja documentado `[criterio jurídico]`:**
+
+- **¿La entrega a los socios es lícita?** Se cruza con la Ley 20.000 Art. 4 inc. 2 y el DS 404 Art. 5. La skill
+  arma el fundamento del modelo (receta → sin provisión pública ni privada → asociación → cultivo colectivo, con la
+  Constitución Art. 19 N° 1, 9 y 15) como **argumento con evidencia por eslabón**, no como regla zanjada.
+- **¿La cuota del socio es cuota de asociado o venta?** El SII aceptó cuotas variables según lo que recibe cada
+  asociado (Oficio 2419/2013), pero en un caso de alimentos donados; el caso del cannabis lo verifica el
+  fiscalizador con los hechos.
+
+### La DJ 1945 y las cuotas de los socios
+
+Es común creer que la DJ 1945 justifica los aportes. **No es así**: la DJ 1945 los **informa**. Sus instrucciones
+dicen que las OSFL siguen sujetas "al mismo tratamiento tributario que el resto de los contribuyentes". Lo que
+sostiene una cuota de asociado es:
+
+1. **DL 824 Art. 17 N° 11:** "No constituye renta: [...] Las cuotas que eroguen los asociados."
+2. **Oficio SII 2419/2013:** la cuota puede ser fija o variable, fijada en los estatutos "con carácter de
+   uniformidad y generalidad para todos los asociados".
+3. **Oficio SII 3616/2002:** no lleva IVA ni factura; basta "un comprobante de ingreso".
+
+El control `trib-aporte-trazable` pide que cada cuota registrada cite la regla de los estatutos que la fija, y
+`trib-dj1945` que el software pueda exportar por año los ingresos por tipo y por RUT.
 
 ## Quickstart
 
@@ -72,15 +125,16 @@ DS 404 Art. 5) y verifica lo que sí se puede comprobar en el código.
 # 1. Instalar (la skill es este repo)
 git clone <url-de-este-repo> ~/.claude/skills/compliance-cannabis-cl
 
-# 2. Bajar los textos oficiales que no se redistribuyen (receta en sources/FUENTES.md)
+# 2. Bajar los textos oficiales (BCN y SII), que no se redistribuyen: recetas en sources/FUENTES.md
 
-# 3. En Claude Code, dentro del repo a auditar:
+# 3. Comprobar que todas las citas aparecen en esos textos
+python -I scripts/verify_quotes.py
+
+# 4. En Claude Code, dentro del repo a auditar:
 /compliance-cannabis-cl
 ```
 
 ## Ejemplo de output
-
-La skill escribe en el repo auditado un estado vivo y versionable:
 
 ```text
 .compliance/
@@ -88,74 +142,87 @@ La skill escribe en el repo auditado un estado vivo y versionable:
 ├── RESUMEN.md        # brechas priorizadas + qué resolviste + diff vs la corrida anterior
 ├── INSTRUCTIVO.md    # guías: derecho ARCO · brecha · fiscalización · calendario
 └── docs/
-    ├── 21719-rat.md  21719-politica-privacidad.md  21719-dpa.md  21719-plan-respuesta-brechas.md
+    ├── san-fundamento-modelo-operativo.md  san-politica-receta.md  san-registro-trazabilidad.md
+    ├── san-bitacora-sag.md                 (solo con cultivo autorizado)
+    ├── pac-clasificacion-registro.md       pac-politica-ficha-clinica.md (solo si es ficha clínica)
+    ├── osfl-gobierno-asociativo.md
+    ├── 21719-rat.md  21719-politica-privacidad.md  21719-consentimiento.md  21719-canal-derechos.md
+    ├── 21719-dpa.md  21719-anexo-transferencias.md  21719-plan-respuesta-brechas.md  21719-eipd.md
     └── 21595-modelo-prevencion-delitos.md  21595-codigo-etica.md  21595-matriz-riesgos.md
 ```
 
-Cada corrida es un commit, así que git te queda como historial: ves cuándo subió o bajó tu postura y
-quién cambió qué.
+Cada corrida es un commit: git queda como historial de tu postura.
 
-## Respaldado en la ley
+## Respaldado en fuentes oficiales
 
-El contenido legal se contrasta contra el texto oficial que viene en [`sources/`](sources/): el PDF del
-Diario Oficial y los XML de Ley Chile, con [`FUENTES.md`](sources/FUENTES.md) (URL, `idNorma`, SHA-256 y
-el comando para volver a bajarlos). En [`mapa-articulos-21719.md`](references/mapa-articulos-21719.md)
-cada artículo está chequeado contra el texto, con la línea donde aparece. Lo que no se puede confirmar
-ahí queda marcado como `[verificar contra fuente oficial]`. `python -I scripts/verify_quotes.py` comprueba que
-cada cita de los packs aparezca textual en los textos oficiales descargados (BCN y SII).
+- **Textos:** XML de Ley Chile (BCN) y documentos del SII. No se versionan en este repo (repo público, la
+  redistribución de la BCN no está confirmada): [`sources/FUENTES.md`](sources/FUENTES.md) trae `idNorma`, URL,
+  SHA-256 y el comando para bajarlos a `sources/.cache/`.
+- **Verificación:** `python -I scripts/verify_quotes.py` busca cada cita de 20 o más caracteres de los packs y sus
+  plantillas en esos textos y falla si alguna no aparece. Correrlo después de editar un pack y cada vez que cambie
+  una ley.
+- **Marcas:** lo que no se pudo verificar lleva `[verificar contra fuente oficial]`; lo que exige interpretación,
+  `[criterio jurídico]`.
+- **Los oficios del SII** responden consultas concretas: orientan, pero no obligan al fiscalizador frente a hechos
+  distintos.
 
 ## Estructura
 
 ```text
 SKILL.md                          # el motor (multi-pack, se apoya en sources/)
 references/
-  controls.md                     # catálogo de controles + crosswalk (un control cubre varias leyes)
+  controls.md                     # catálogo de 65 controles + crosswalk
   output-model.md                 # formato del estado .compliance/
-  cuando-acudir-a-abogado.md      # por qué el abogado es opcional (lo armas tú)
+  cuando-acudir-a-abogado.md      # por qué el abogado es opcional
   instructivo-situaciones.md      # guías operativas
-  mapa-articulos-21719.md         # artículos chequeados contra el texto oficial
+  mapa-articulos-21719.md         # artículos de la 21.719 chequeados contra el texto oficial
+  build/                          # recetas para construir las remediaciones
 packs/
-  ley-21719/  ley-21595/          # obligaciones + plantillas por marco
   sanitario-cannabis/             # Ley 20.000, DS 867, DS 404/405, Código Sanitario
   ley-20584/                      # derechos del paciente y ficha clínica (DS 41/2012)
   ley-20500/  tributario/         # la OSFL como asociación; SII
-  ley-21663/  ley-19628/          # ciberseguridad; ley de datos vigente hasta dic-2026
-scripts/bcn_article.py            # lee un artículo del XML oficial de la BCN para verificar citas
-scripts/verify_quotes.py          # verifica todas las citas de los packs contra BCN y SII (ver FUENTES.md)
-sources/                          # textos legales oficiales + FUENTES.md (reproducible)
+  ley-21719/  ley-19628/          # datos personales: la nueva y la vigente hasta dic-2026
+  ley-21663/  ley-21595/          # ciberseguridad; delitos económicos
+scripts/
+  bcn_article.py                  # lee un artículo del XML oficial de la BCN
+  verify_quotes.py                # verifica todas las citas contra BCN y SII
+  quote-allowlist.txt             # textos entre comillas que no son citas legales
+sources/                          # FUENTES.md + caché local de textos oficiales (git-ignored)
 ```
+
+## Pendientes conocidos
+
+- Artículos transitorios de la Ley 21.663 (vigencia escalonada): no leídos.
+- DS 110/1979 (reglamento de personas jurídicas), citado por el Oficio 2419: vigencia sin verificar.
+- Resolución de la Agencia de Ciberseguridad que identifica los servicios esenciales: revisar cuando se publique.
 
 ## Roadmap
 
-- [ ] Completar el mapa de artículos (transferencias internacionales, MPD/DPO).
-- [x] Pack `sanitario-cannabis`.
-- [x] Pack `ley-20584`.
-- [x] Packs `ley-20500`, `tributario`, `ley-21663`, `ley-19628`.
-- [ ] Packs nuevos: GDPR, ISO 27001, SOC 2.
+- [x] Packs `sanitario-cannabis`, `ley-20584`, `ley-20500`, `tributario`, `ley-21663`, `ley-19628`.
+- [x] Verificador de citas contra BCN y SII.
+- [ ] Completar el mapa de artículos de la 21.719 (transferencias internacionales, MPD/DPO).
 - [ ] Mejor detección de cambios entre corridas.
 - [ ] Revisión legal opcional de las plantillas (un plus, no un requisito).
 
 ## Contribuir
 
-Se agradecen issues y PRs, sobre todo packs nuevos, correcciones de artículos chequeadas contra el
-texto oficial, y mejoras a las guías. Lee [`CONTRIBUTING.md`](CONTRIBUTING.md).
+Se agradecen issues y PRs, sobre todo correcciones de citas comprobadas contra el texto oficial (con
+`verify_quotes.py` en verde) y packs nuevos. Lee [`CONTRIBUTING.md`](CONTRIBUTING.md).
 
 ## Qué no hace
 
-- **Monitoreo / detección de filtraciones en tiempo real** (DLP, alertas 24/7): es un servicio corriendo
-  siempre, no una skill on-demand. La skill prepara el plan de respuesta y puede configurar alertas sobre
-  el audit log, pero la vigilancia en vivo es otra categoría.
-- **Representarte** ante la Agencia o tribunales (eso es de un abogado) ni reemplazar la **supervisión
-  externa anual del MPD** (Ley 21.595, la hace un tercero).
-
-No reemplaza a un abogado: te deja listo para cumplir y te dice qué falta.
+- **No dice si tu modelo de cultivo o entrega es legal.** Documenta las preguntas abiertas con sus citas.
+- **No vigila en tiempo real** (DLP, alertas 24/7): prepara el plan de respuesta y puede configurar alertas sobre el
+  audit log.
+- **No te representa** ante la Agencia, el SII, el ISP o tribunales, ni reemplaza la **supervisión externa anual
+  del MPD** (Ley 21.595).
 
 ## Aviso
 
-Esto no es asesoría legal: un software no asume tu responsabilidad legal, la decisión final es tuya. Te
-deja listo para cumplir solo. Un abogado es un plus opcional si quieres una revisión, y solo es
-imprescindible si te fiscalizan y escala a una disputa (la representación, por ley, la hace un abogado).
-Ver [`NOTICE.md`](NOTICE.md).
+Esto no es asesoría legal: un software no asume tu responsabilidad legal y la decisión final es tuya. En el
+cannabis medicinal varias preguntas centrales no tienen respuesta zanjada; la skill las marca como
+`[criterio jurídico]` en vez de esconderlas. Para esas, y si te fiscalizan, conviene un abogado. Ver
+[`NOTICE.md`](NOTICE.md).
 
 ## Licencia
 

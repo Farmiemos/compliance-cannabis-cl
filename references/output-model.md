@@ -9,14 +9,18 @@ por git. Re-correr la skill compara contra el estado anterior y reporta avance/*
 ├── state.json        # estado de controles + score por marco (la "postura")
 ├── RESUMEN.md        # informe legible + diff vs corrida anterior + plan
 └── docs/             # documentos generados por los packs activos
-    ├── 21719-rat.md
-    ├── 21719-politica-privacidad.md
-    ├── 21719-dpa.md
-    ├── 21719-plan-respuesta-brechas.md
-    ├── 21595-modelo-prevencion-delitos.md
-    ├── 21595-codigo-etica.md
-    └── 21595-matriz-riesgos.md
+    ├── san-fundamento-modelo-operativo.md  san-politica-receta.md  san-registro-trazabilidad.md
+    ├── san-bitacora-sag.md                 (solo con cultivo autorizado)
+    ├── pac-clasificacion-registro.md       pac-politica-ficha-clinica.md (solo si es ficha clínica)
+    ├── osfl-gobierno-asociativo.md
+    ├── 21719-rat.md  21719-politica-privacidad.md  21719-consentimiento.md  21719-canal-derechos.md
+    ├── 21719-dpa.md  21719-anexo-transferencias.md  21719-plan-respuesta-brechas.md  21719-eipd.md
+    └── 21595-modelo-prevencion-delitos.md  21595-codigo-etica.md  21595-matriz-riesgos.md
 ```
+
+Nombre de cada documento: prefijo del pack + nombre de la plantilla (`sanitario-cannabis` → `san-`, `ley-20584` →
+`pac-`, `ley-20500` → `osfl-`, `ley-21719` → `21719-`, `ley-21595` → `21595-`). `tributario`, `ley-21663` y
+`ley-19628` no tienen plantillas propias: sus resultados van al fundamento operativo, al plan de brechas y al RAT.
 
 ## `state.json` (esquema)
 ```json
